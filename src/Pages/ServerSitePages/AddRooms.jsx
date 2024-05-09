@@ -1,7 +1,45 @@
 import {} from "react-icons/bs";
 import addImage from "../../assets/images/addpage.png";
+import Swal from "sweetalert2";
+import { Navigate,useLocation } from 'react-router-dom';
 
 const AddRooms = () => {
+
+  const location = useLocation();
+  
+  const handleAddRoom = (event) =>{
+    event.preventDefault();
+    const form = event.target;
+    const room = form.room.value;
+    const price = form.price.value;
+    const availability = form.availability.value;
+    const size = form.size.value;
+    const image = form.image.value;
+    const offer = form.offer.value;
+    const RoomData = {room,price,availability,size,offer,image}
+    console.log(RoomData)
+
+    fetch('http://localhost:5000/allRoom',{
+      method : 'POST',
+      headers : {
+        'content-type' : 'application/json',
+      },
+      body:JSON.stringify(RoomData)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      if(data.insertedId){
+        Swal.fire({
+            title: "Good job!",
+            text: "Your Paint have added",
+            icon: "success"
+          });
+        <Navigate state={location.pathname} to='/allPaint'></Navigate>
+    }
+    })
+  }
+
   return (
     <div>
       <div className="mt-5 container mx-auto">
@@ -23,11 +61,12 @@ const AddRooms = () => {
               </div>
             </div>
 
-            <form className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
+            <form onSubmit={handleAddRoom} className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
               <label className="block">
                 <span className="mb-1">Room Description</span>
                 <input
                   type="text"
+                  name="room"
                   placeholder="Room Description"
                   className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                 />
@@ -36,6 +75,7 @@ const AddRooms = () => {
                 <span className="mb-1">Price Per Night</span>
                 <input
                   type="text"
+                  name="price"
                   placeholder="Price Per Night"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                 />
@@ -58,6 +98,7 @@ const AddRooms = () => {
               <label className="block">
                 <span className="mb-1">Room Size</span>
                 <input
+                  name="size"
                   type="text"
                   placeholder="Room Size"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
@@ -66,7 +107,8 @@ const AddRooms = () => {
               <label className="block">
                 <span className="mb-1">Special Offer</span>
                 <input
-                  type="text"
+                  name="offer"
+                  type="number"
                   placeholder="Special Offer"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                 />
@@ -74,13 +116,14 @@ const AddRooms = () => {
               <label className="block">
                 <span className="mb-1">Image</span>
                 <input
+                  name="image"
                   type="text"
                   placeholder="Image Url"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                 />
               </label>
               <button
-                type="button"
+                type="submit"
                 className="self-center w-full btn btn-primary border-btn-border hover:bg-btn-hover hover:border-btn-hover bg-btn"
               >
                 Add Room
