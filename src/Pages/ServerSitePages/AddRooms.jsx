@@ -71,6 +71,14 @@ const AddRooms = () => {
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                 />
               </label>
+              <label className="block">
+                <span className="mb-1">Image</span>
+                <input
+                  type="text"
+                  placeholder="Image Url"
+                  className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                />
+              </label>
               <button
                 type="button"
                 className="self-center w-full btn btn-primary border-btn-border hover:bg-btn-hover hover:border-btn-hover bg-btn"
