@@ -7,6 +7,8 @@ import Register from "../Pages/Authentication/Register";
 import MyBookings from "../Pages/Bookings/MyBookings";
 import About from "../Pages/StaticPage/About";
 import ContactUs from "../Pages/StaticPage/ContactUs";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AddRooms from "../Pages/ServerSitePages/AddRooms";
 
 export const router = createBrowserRouter([
     {
@@ -36,7 +38,11 @@ export const router = createBrowserRouter([
         },
         {
           path:'/contactUs',
-          element: <ContactUs></ContactUs>
+          element:<PrivateRoute> <ContactUs></ContactUs></PrivateRoute>
+        },
+        {
+          path:'/addRooms',
+          element:<PrivateRoute><AddRooms></AddRooms> </PrivateRoute>
         }
       ]
     },

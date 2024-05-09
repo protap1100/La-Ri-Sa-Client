@@ -38,7 +38,7 @@ const NewsLetter = () => {
         />
         <button
           type="submit"
-          className="ml-5 btn btn-primary border-btn-border hover:bg-btn-hover hover:border-btn-hover bg-btn transition duration-300"
+          className=" btn btn-primary border-btn-border hover:bg-btn-hover hover:border-btn-hover bg-btn transition duration-300"
         >
           Subscribe
         </button>

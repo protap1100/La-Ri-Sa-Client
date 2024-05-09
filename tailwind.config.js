@@ -20,7 +20,7 @@ export default {
         'TopBackground': '#636e72',
         'hover':'48a5ad',
         'navLink': '#e17055',
-        'activeLink': '#ff7675'
+        'activeLink': '#bf2f2f'
       },
     },
   },

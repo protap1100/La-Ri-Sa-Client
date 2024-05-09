@@ -183,12 +183,6 @@ const Register = () => {
                   <BsGoogle></BsGoogle>
                 </h1>
               </div>
-              <div onClick={handleGithubLogin} className="p-5 animate__animated animate__fadeInDown text-center bg-blue-300 rounded-xl mt-5 flex items-center justify-center gap-10 hover:bg-blue-500  cursor-pointer">
-                <h1>Login With Github</h1>
-                <h1 className="text-xl">
-                  <BsGithub></BsGithub>
-                </h1>
-              </div>
             </div>
           </div>
         </div>
