@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { BsGithub, BsGoogle } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation , useNavigate } from "react-router-dom";
 // import { Helmet } from "react-helmet-async";
@@ -117,7 +117,7 @@ const Login = () => {
                 {/* <h1 className=" text-red-700">{successMessage}</h1> */}
               </div>
               <div className="form-control mt-6 animate__animated animate__fadeInDown">
-                <button className="btn btn-primary bg-btn border-btn-border hover:bg-btn-hover">
+                <button className="btn btn-primary bg-btn border-btn-border hover:bg-btn-hover hover:border-btn-hover">
                   Login
                 </button>
               </div>

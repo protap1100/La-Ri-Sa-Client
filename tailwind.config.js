@@ -17,9 +17,10 @@ export default {
         'btn-border':'#ff6348',
         'btn-hover': '#d63031',
         'border': '#2ed573',
-        'TopBackground': '#262626',
+        'TopBackground': '#636e72',
         'hover':'48a5ad',
-        'navLink': '#e17055'
+        'navLink': '#e17055',
+        'activeLink': '#ff7675'
       },
     },
   },
