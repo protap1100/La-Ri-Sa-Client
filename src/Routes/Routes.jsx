@@ -9,6 +9,9 @@ import About from "../Pages/StaticPage/About";
 import ContactUs from "../Pages/StaticPage/ContactUs";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AddRooms from "../Pages/ServerSitePages/AddRooms";
+import MyRooms from "../Pages/ServerSitePages/MyRooms";
+import AllRooms from "../Pages/AllRooms";
+import RoomDetails from "../Pages/RoomDetails";
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +46,20 @@ export const router = createBrowserRouter([
         {
           path:'/addRooms',
           element:<PrivateRoute><AddRooms></AddRooms> </PrivateRoute>
+        },
+        {
+          path:'/myRoom',
+          element : <PrivateRoute><MyRooms></MyRooms></PrivateRoute>,
+        },
+        {
+          path:'/allRoom',
+          element : <AllRooms></AllRooms>,
+          loader : () => fetch('http://localhost:5000/allRoom')
+        },
+        {
+          path:'/roomDetails/:id',
+          element : <RoomDetails></RoomDetails>,
+          loader : ({params}) => fetch(`http://localhost:5000/roomDetails/${params.id}`)
         }
       ]
     },

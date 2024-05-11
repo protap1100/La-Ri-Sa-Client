@@ -1,44 +1,55 @@
 import {} from "react-icons/bs";
 import addImage from "../../assets/images/addpage.png";
 import Swal from "sweetalert2";
-import { Navigate,useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddRooms = () => {
-
+  const { user } = useContext(AuthContext);
   const location = useLocation();
-  
-  const handleAddRoom = (event) =>{
+
+  const handleAddRoom = (event) => {
     event.preventDefault();
     const form = event.target;
-    const room = form.room.value;
+    const roomDesc = form.room.value;
     const price = form.price.value;
     const availability = form.availability.value;
     const size = form.size.value;
+    const email = form.email.value;
     const image = form.image.value;
     const offer = form.offer.value;
-    const RoomData = {room,price,availability,size,offer,image}
-    console.log(RoomData)
+    const RoomData = {
+      roomDesc,
+      price,
+      availability,
+      size,
+      offer,
+      image,
+      email,
+    };
+    console.log(RoomData);
 
-    fetch('http://localhost:5000/allRoom',{
-      method : 'POST',
-      headers : {
-        'content-type' : 'application/json',
+    fetch("http://localhost:5000/allRoom", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(RoomData)
+      body: JSON.stringify(RoomData),
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-      if(data.insertedId){
-        Swal.fire({
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
             title: "Good job!",
             text: "Your Paint have added",
-            icon: "success"
+            icon: "success",
           });
-        <Navigate state={location.pathname} to='/allPaint'></Navigate>
-    }
-    })
-  }
+          <Navigate state={location.pathname} to="/allPaint"></Navigate>;
+        }
+      });
+  };
 
   return (
     <div>
@@ -56,12 +67,15 @@ const AddRooms = () => {
               <img className="rounded-xl" src={addImage} alt="" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-white text-lg font-bold p-5 bg-gray-700 rounded">
-                  Add Your Room Here
+                    Fill The Form To Add Room
                 </p>
               </div>
             </div>
 
-            <form onSubmit={handleAddRoom} className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
+            <form
+              onSubmit={handleAddRoom}
+              className="flex flex-col py-6 space-y-6 md:py-0 md:px-6"
+            >
               <label className="block">
                 <span className="mb-1">Room Description</span>
                 <input
@@ -72,7 +86,7 @@ const AddRooms = () => {
                 />
               </label>
               <label className="block">
-                <span className="mb-1">Price Per Night</span>
+                <span className="mb-1">Price Per Night (In Dollar)</span>
                 <input
                   type="text"
                   name="price"
@@ -96,21 +110,36 @@ const AddRooms = () => {
                 </select>
               </label>
               <label className="block">
-                <span className="mb-1">Room Size</span>
+                <span className="mb-1">Room Size (In Sq)</span>
                 <input
                   name="size"
-                  type="text"
+                  type="number"
+                  placeholder="Room Size"
+                  className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                  min="50"
+                  max="600"
+                />
+              </label>
+              <label className="block">
+                <span className="mb-1">Email</span>
+                <input
+                  name="email"
+                  type="email"
+                  readOnly
+                  defaultValue={user?.email}
                   placeholder="Room Size"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                 />
               </label>
               <label className="block">
-                <span className="mb-1">Special Offer</span>
+                <span className="mb-1">Special Offer (In Percentage Max 60%)</span>
                 <input
                   name="offer"
                   type="number"
                   placeholder="Special Offer"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                  min="1" 
+                  max="60" 
                 />
               </label>
               <label className="block">

@@ -73,6 +73,18 @@ const Navbar = () => {
                 My Bookings
               </NavLink>
               <NavLink
+                to="/myBookings"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "font-bold bg-activeLink p-2  text-white rounded-sm hover:bg-btn-hover"
+                    : "font-bold bg-navLink p-2  text-white rounded-sm hover:bg-btn-hover"
+                }
+              >
+                My Bookings
+              </NavLink>
+              <NavLink
                 to="/about"
                 className={({ isActive, isPending }) =>
                   isPending
@@ -98,7 +110,7 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl font-Titillium">
+          <Link to="/" className="btn btn-ghost text-xl font-Titillium bg-gradient-to-r from-red-600 via-pink-500 to-indigo-400  text-transparent bg-clip-text" >
             La Ri Sa
           </Link>
         </div>
@@ -127,6 +139,18 @@ const Navbar = () => {
               }
             >
               My Bookings
+            </NavLink>
+            <NavLink
+              to="/allRoom"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "font-bold bg-activeLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover "
+                  : "font-bold bg-navLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
+              }
+            >
+              All Room
             </NavLink>
             <NavLink
               to="/about"
@@ -189,6 +213,13 @@ const Navbar = () => {
                           onClick={toggleDropdown}
                         >
                           Add Room
+                        </Link>
+                        <Link
+                          to="/myRoom"
+                          className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                          onClick={toggleDropdown}
+                        >
+                          My Rooms
                         </Link>
                         <Link
                           to="/updateProfile"
