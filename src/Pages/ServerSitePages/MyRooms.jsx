@@ -53,16 +53,16 @@ const MyRooms = () => {
             <table className="w-full">
                 <tbody>
                     <tr>
-                        <td className="font-semibold p-2">ID</td>
-                        <td className="font-semibold p-2">Room Desc</td>
-                        <td className="font-semibold p-2">Price</td>
-                        <td className="font-semibold p-2">Size</td>
-                        <td className="font-semibold p-2">Availability</td>
-                        <td className="font-semibold p-2 ">View Details</td>
+                        <td className="font-semibold p-2 text-center">ID</td>
+                        <td className="font-semibold p-2 text-center">Room Desc</td>
+                        <td className="font-semibold p-2 text-center">Price</td>
+                        <td className="font-semibold p-2 text-center">Size</td>
+                        <td className="font-semibold p-2 text-center">Availability</td>
+                        <td className="font-semibold p-2 text-center">View Details</td>
                         <td className="font-semibold p-2 text-center">Update</td>
                         <td className="font-semibold p-2 text-center">Delete</td>
                     </tr>
-                    {myRoom.map(room => <SingleRoom key={room._id} room={room} onDelete={()=>handleDelete(room._id)}></SingleRoom>)}
+                  {myRoom.map(room => <SingleRoom key={room._id} room={room} onDelete={()=>handleDelete(room._id)}></SingleRoom>)}
                 </tbody>
             </table>
          </div>

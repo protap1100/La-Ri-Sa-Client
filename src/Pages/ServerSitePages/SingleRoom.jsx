@@ -29,7 +29,7 @@ const SingleRoom = ({ room,onDelete }) => {
   return (
     <tr className="animate__animated animate__fadeInLeft">
       <td className="p-2 ">{_id}</td>
-      <td className="p-2">{roomDesc}</td>
+      <td className="p-2 text-center">{roomDesc.slice(0,100)}</td>
       <td className="p-2">{price}$</td>
       <td className="p-2">{size} Sq</td>
       <td className="p-2">{availability === "available" ? <p className="text-green-600">Available</p> : <p className="text-red-600">Not Available</p>}</td>
