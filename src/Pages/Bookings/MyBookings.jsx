@@ -40,7 +40,7 @@ const MyBookings = () => {
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ availability: "available" }), // Update availability to 'not available'
+              body: JSON.stringify({ availability: "available" }),
             }).then((response) => {
               if (response.ok) {
                 Swal.fire("Room Canceled Successfully");
@@ -57,7 +57,7 @@ const MyBookings = () => {
 
     return (
         <div className="my-5">
-            <h1 className="text-3xl font-bold text-red-700 text-center">My Booking</h1>
+            <h1 className="text-3xl font-bold text-red-700 text-center">My Booking: {booking.length} </h1>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                 {
                     booking.map(book=> <BookingCard key={book._id} cancelBooking={cancelBooking} book={book}></BookingCard> )

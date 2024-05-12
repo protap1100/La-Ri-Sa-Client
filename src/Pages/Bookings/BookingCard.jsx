@@ -1,7 +1,6 @@
 const BookingCard = ({ book,cancelBooking }) => {
+  
   const { _id, name, offer, roomDesc, image, date, phone, price, size } = book;
-
-
 
   return (
     <div className="flex flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2">
