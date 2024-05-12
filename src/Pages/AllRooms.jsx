@@ -6,7 +6,7 @@ const AllRooms = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allRoom`)
+    fetch(`http://localhost:5000/allRoom`,{credentials: 'include'})
       .then((res) => res.json())
       .then((data) => {
         const availableRooms = data.filter(
@@ -17,7 +17,7 @@ const AllRooms = () => {
       });
   }, []);
 
-  console.log(myRoom);
+  // console.log(myRoom);
   return (
     <div>
       {loading ? (

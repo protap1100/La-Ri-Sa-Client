@@ -1,15 +1,16 @@
 import { useContext, useState } from "react";
-import { BsGithub, BsGoogle } from "react-icons/bs";
+import {BsGoogle } from "react-icons/bs";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link,useLocation, useNavigate } from "react-router-dom";
 // import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 const Register = () => {
 
-  const {createUser,googleSignIn,GithubSignIn} = useContext(AuthContext);
+  const {createUser,googleSignIn} = useContext(AuthContext);
   const [showPassword, setShowPassword]  = useState(false);
   const [wrongPassword, setWrongPassword] = useState('');
   const [regSuccess, setRegSuccess] = useState('');
@@ -20,33 +21,26 @@ const Register = () => {
   const handleGoogleLogin = () =>{
     // console.log('hello world');
     googleSignIn()
-    .then(()=>{
-      // console.log(res,'doing')
-      toast.success('Google Login Completed')
-      setTimeout(() => {
-        navigate(location?.state ? location.state : '/')
-      }, 2000);
-      
-    })
-    .catch((error) =>{
-      console.log(error,'login in failed')
-    })
-  }
+      .then((googleToken) => {
+        axios.post('http://localhost:5000/jwt', { googleToken }, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              toast.success('Google Login Successful');
+              setTimeout(() => {
+                navigate(location?.state ? location.state : '/');
+              }, 2000);
+            }
+          })
+          .catch((error) => {
+            console.error('Google login validation failed:', error);
+          });
+      })
+      .catch((error) => {
+        console.error('Google login failed:', error);
+      });
+  };
   
-  const handleGithubLogin = () =>{
-    console.log('Hello world');
-    GithubSignIn()
-    .then(()=>{
-      // console.log(res,'Hi')
-      toast.success('Github Login Completed')
-      setTimeout(() => {
-        navigate(location?.state ? location.state : '/')
-      }, 2000);
-    })
-    .catch(error=>{
-      console.log(error,'github Login Done')
-    })
-  }
 
   const handleRegister = (e) =>{
       e.preventDefault();
@@ -170,7 +164,7 @@ const Register = () => {
             </form>
             <div> 
               <h1 className="mt-5 text-center animate__animated animate__fadeInDown">
-                Do Not Have An Account?{" "}
+                Do Not Have An Account?
                 <Link className="font-bold text-green-700 animate__animated animate__fadeInDown"  to="/login">
                   Login
                 </Link>

@@ -13,6 +13,7 @@
     "animate.css": "^4.1.1",
     "animate.css-react": "^1.1.0",
     "aos": "^2.3.4",
+    "axios": "^1.6.8",
     "firebase": "^10.11.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

@@ -4,10 +4,6 @@ import Swal from "sweetalert2";
 const SingleRoom = ({ room,onDelete }) => {
   const { _id, roomDesc, price, size, availability } = room;
 
-  const handleUpdate = (id)=>{
-    console.log(id)
-  }
-
   const handleDelete = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -40,7 +36,7 @@ const SingleRoom = ({ room,onDelete }) => {
       <td>
         <Link
           to={`/roomDetails/${_id}`}
-          className="p-2 rounded hover:bg-btn-hover text-white bg-btn border-btn"
+          className="p-2 rounded hover:bg-blue-950 text-white bg-blue-600 border-btn"
         >
           View Details
         </Link>

@@ -3,19 +3,25 @@ import SingleRoom from "./SingleRoom";
 import { useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext } from "react";
+import axios from "axios";
 
 const MyRooms = () => {
 
     const {user} = useContext(AuthContext);
 
-    const {email} = user;
 
-    const [myRoom, setMyRoom] = useState([])
+    const [myRoom, setMyRoom] = useState([]);
+
+    const url = `http://localhost:5000/allMyRooms?email=${user?.email}`
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allMyRooms?email=${email}`)
-          .then(res => res.json())
-          .then(data => setMyRoom(data));
+        axios.get(url,{withCredentials: true})
+        .then(res=>{
+          setMyRoom(res.data)
+        })
+        // fetch(`http://localhost:5000/allMyRooms?email=${email}`)
+        //   .then(res => res.json())
+        //   .then(data => setMyRoom(data));
       }, []);
     
       const handleDelete = (id) => {
@@ -34,8 +40,6 @@ const MyRooms = () => {
             console.error('Error deleting Room:', error);
           });
       };
-
-
 
 
     return (

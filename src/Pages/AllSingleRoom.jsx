@@ -1,9 +1,9 @@
-import {  Link, useLocation } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 const AllSingleRoom = ({room}) => {
     const {_id,roomDesc,size,image,offer,availability} = room;
-    const hi = useLocation();
-    console.log(hi)
+    // const hi = useLocation();
+    // console.log(hi)
     return (
         <div className="flex flex-col justify-center items-center space-y-3 ">
             <div><img className="h-96 w-96" src={image} alt="" /></div>

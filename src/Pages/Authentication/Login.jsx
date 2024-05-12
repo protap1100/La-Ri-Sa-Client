@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 
 const Login = () => {
@@ -18,21 +19,27 @@ const Login = () => {
   const navigate = useNavigate();
 
   // console.log('location redirect', location)
-  const handleGoogleLogin = () =>{
-    // console.log('hello world');
+  const handleGoogleLogin = () => {
     googleSignIn()
-    .then(()=>{
-      // // console.log(res,'doing');
-      // navigate(location?.state ? location.state : '/')
-      toast.success('Google Login Successful')
-      setTimeout(() => {
-        navigate(location?.state ? location.state : '/')
-      }, 2000);
-    })
-    .catch((error) =>{
-      console.log(error,'login in failed')
-    })
-  }
+      .then((googleToken) => {
+        axios.post('http://localhost:5000/jwt', { googleToken }, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              toast.success('Google Login Successful');
+              setTimeout(() => {
+                navigate(location?.state ? location.state : '/');
+              }, 2000);
+            }
+          })
+          .catch((error) => {
+            console.error('Google login validation failed:', error);
+          });
+      })
+      .catch((error) => {
+        console.error('Google login failed:', error);
+      });
+  };
 
 
   const handleLogin = (e) =>{
@@ -44,10 +51,20 @@ const Login = () => {
     signIn(email,password)
     .then(()=>{
       // console.log(res.user)
-      toast.success('Login SuccessFull');
-      setTimeout(() => {
-        navigate(location?.state ? location.state : '/')
-      }, 2000);
+
+      // Getting Token 
+      const user = {email}
+      axios.post('http://localhost:5000/jwt',user,{withCredentials: true})
+      .then(res=>{
+        console.log(res.data)
+        if(res.data.success){
+          toast.success('Login SuccessFull');
+          setTimeout(() => {
+            navigate(location?.state ? location.state : '/')
+          }, 2000);
+        }
+      })
+      
     })
     .catch(()=>{
       // console.log(error,'Kaj Hocche na ')
