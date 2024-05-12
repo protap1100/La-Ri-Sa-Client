@@ -127,7 +127,7 @@ const AddRooms = () => {
                   type="email"
                   readOnly
                   defaultValue={user?.email}
-                  placeholder="Room Size"
+                  placeholder="Email"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                 />
               </label>

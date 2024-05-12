@@ -13,10 +13,30 @@ const MyRooms = () => {
     const [myRoom, setMyRoom] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allRoom?email=${email}`)
+        fetch(`http://localhost:5000/allMyRooms?email=${email}`)
           .then(res => res.json())
           .then(data => setMyRoom(data));
       }, []);
+    
+      const handleDelete = (id) => {
+        fetch(`http://localhost:5000/allRoom/${id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            // console.log(data);
+            if (data.deletedCount > 0) {
+              const remainingRoom = myRoom.filter(room => room._id !== id);
+              setMyRoom(remainingRoom);
+            }
+          })
+          .catch(error => {
+            console.error('Error deleting Room:', error);
+          });
+      };
+
+
+
 
     return (
         <div>
@@ -34,15 +54,17 @@ const MyRooms = () => {
                         <td className="font-semibold p-2">Price</td>
                         <td className="font-semibold p-2">Size</td>
                         <td className="font-semibold p-2">Availability</td>
-                        <td className="font-semibold p-2">View Details</td>
+                        <td className="font-semibold p-2 ">View Details</td>
+                        <td className="font-semibold p-2 text-center">Update</td>
+                        <td className="font-semibold p-2 text-center">Delete</td>
                     </tr>
-                    {myRoom.map(room => <SingleRoom key={room._id} room={room}></SingleRoom>)}
+                    {myRoom.map(room => <SingleRoom key={room._id} room={room} onDelete={()=>handleDelete(room._id)}></SingleRoom>)}
                 </tbody>
             </table>
          </div>
         </div>
         <div className="flex my-5 justify-end">
-             <Link to="/addRooms" className="btn border-btn-border  bg-btn text-white">Add Paint </Link>
+             <Link to="/addRooms" className="p-2 rounded hover:bg-btn-hover border-btn-border  bg-btn text-white">Add Room </Link>
         </div>
     </div>
     );

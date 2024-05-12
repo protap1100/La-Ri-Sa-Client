@@ -12,6 +12,7 @@ import AddRooms from "../Pages/ServerSitePages/AddRooms";
 import MyRooms from "../Pages/ServerSitePages/MyRooms";
 import AllRooms from "../Pages/AllRooms";
 import RoomDetails from "../Pages/RoomDetails";
+import UpdateRoom from "../Pages/ServerSitePages/UpdateRoom";
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +61,11 @@ export const router = createBrowserRouter([
           path:'/roomDetails/:id',
           element : <RoomDetails></RoomDetails>,
           loader : ({params}) => fetch(`http://localhost:5000/roomDetails/${params.id}`)
+        },
+        {
+          path:'/updateRoom/:id',
+          element : <UpdateRoom></UpdateRoom>,
+          loader : ({params}) => fetch(`http://localhost:5000/updateRoom/${params.id}`)
         }
       ]
     },

@@ -1,7 +1,34 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const SingleRoom = ({ room }) => {
+const SingleRoom = ({ room,onDelete }) => {
   const { _id, roomDesc, price, size, availability } = room;
+
+  const handleUpdate = (id)=>{
+    console.log(id)
+  }
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Call onDelete callback passed from parent
+        onDelete();
+        Swal.fire(
+          'Deleted!',
+          'Your Paint has been deleted.',
+          'success',
+        );
+      }
+    });
+  };
 
   return (
     <tr className="animate__animated animate__fadeInLeft">
@@ -13,11 +40,14 @@ const SingleRoom = ({ room }) => {
       <td>
         <Link
           to={`/roomDetails/${_id}`}
-          className="btn text-white bg-btn border-btn"
+          className="p-2 rounded hover:bg-btn-hover text-white bg-btn border-btn"
         >
           View Details
         </Link>
+        
       </td>
+      <td className="text-center"><Link to={`/updateRoom/${_id}`} className=" p-2 rounded bg-green-600 hover:bg-green-950 text-white" >Update</Link></td>
+      <td className="text-center"><button onClick={handleDelete} className=" p-2 rounded bg-btn hover:bg-btn-hover text-white" >Delete</button></td>
     </tr>
   );
 };
