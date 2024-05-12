@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
-// import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -20,6 +19,20 @@ const RoomDetails = () => {
       const phone = form.phone.value;
       const date = form.checkInDate.value;
 
+      const bookingData = {
+        roomDesc,
+        size,
+        price,
+        availability: 'notAvailable', 
+        offer,
+        email,
+        name,
+        userEmail,
+        date,
+        phone,
+        image
+    };
+
       const modalContent = `
           <div>
               <p><strong>Description:</strong> ${roomDesc}</p>
@@ -34,7 +47,6 @@ const RoomDetails = () => {
               <p><strong>Check In Date:</strong> ${date}</p>
           </div>
       `;
-  
       Swal.fire({
           title: 'Confirm Booking',
           html: modalContent,
@@ -49,19 +61,7 @@ const RoomDetails = () => {
                   headers: {
                       'Content-Type': 'application/json'
                   },
-                  body: JSON.stringify({
-                      roomDesc,
-                      size,
-                      price,
-                      availability,
-                      offer,
-                      email,
-                      name,
-                      userEmail,
-                      date,
-                      phone,
-                      image
-                  })
+                  body: JSON.stringify(bookingData)
               })
               .then(response => {
                   if (response.ok) {

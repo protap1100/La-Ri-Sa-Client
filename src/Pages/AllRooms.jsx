@@ -17,7 +17,7 @@ const AllRooms = () => {
       });
   }, []);
 
-  // console.log(myRoom);
+  console.log(myRoom);
   return (
     <div>
       {loading ? (
