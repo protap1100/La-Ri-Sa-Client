@@ -37,7 +37,7 @@ const AllRooms = () => {
             </h1>
           </div>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-            {myRoom.map((room) => (
+            {myRoom?.map((room) => (
               <AllSingleRoom key={room._id} room={room}></AllSingleRoom>
             ))}
           </div>

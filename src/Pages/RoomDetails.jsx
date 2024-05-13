@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -8,6 +8,9 @@ const RoomDetails = () => {
   const singleRoomDetails = useLoaderData();
   const {_id, roomDesc, image, size, price, availability, offer } =
     singleRoomDetails;
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const email = user?.email;
 
@@ -18,6 +21,7 @@ const RoomDetails = () => {
     const userEmail = form.email.value;
     const phone = form.phone.value;
     const date = form.checkInDate.value;
+    const newId = _id;
 
     const bookingData = {
       roomDesc,
@@ -31,6 +35,7 @@ const RoomDetails = () => {
       date,
       phone,
       image,
+      newId
     };
 
     const modalContent = `
@@ -47,6 +52,7 @@ const RoomDetails = () => {
               <p><strong>Email:</strong> ${image}</p>
               <p><strong>Phone:</strong> ${phone}</p>
               <p><strong>Check In Date:</strong> ${date}</p>
+              <p><strong>Check In Date:</strong> ${newId}</p>
           </div>
       `;
     Swal.fire({
@@ -71,13 +77,15 @@ const RoomDetails = () => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body : JSON.stringify({ _id, newId}),
             });
             }
             throw new Error("Network response was not ok.");
           })
           .then((data) => {
             console.log("Room data saved successfully:", data);
+            navigate(location?.state ? location.state : '/myBookings')
             Swal.fire(
               "You Have Booked This Room Successfully!! <br> Enjoy Our Service and Give us a feedback"
             );
@@ -187,10 +195,9 @@ const RoomDetails = () => {
           </div>
         ) : (
           <div>
-            {" "}
             <h1 className="text-3xl font-bold text-center text-green-800">
               Login To Book This Room
-            </h1>{" "}
+            </h1>
           </div>
         )}
       </div>

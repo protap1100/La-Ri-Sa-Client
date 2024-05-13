@@ -8,6 +8,7 @@ const MyBookings = () => {
     const {user} = useContext(AuthContext);
     const {email} = user;
     const [booking, setBooking] = useState([]);
+    // const [allRoomData,setAllRoomData] = useState([])
 
     const url = `http://localhost:5000/bookedRooms?email=${email}`
     
@@ -24,36 +25,53 @@ const MyBookings = () => {
     }, [url]);
 
     // console.log(booking)
-    const cancelBooking = (id) => {
-        // Make API call to update room availability
-        Swal.fire({
+    const cancelBooking = (id, newId) => {
+      console.log(id,newId)
+      // Make API call to update room availability
+      Swal.fire({
           title: "Confirm Booking",
           html: "Are You Sure You Want to Cancel Booking",
           showCancelButton: true,
           confirmButtonText: "Cancel Booking",
           cancelButtonText: "Cancel",
           icon: "info",
-        }).then((result) => {
+      }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:5000/updateRoomAvailability/${id}`, {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ availability: "available" }),
-            }).then((response) => {
-              if (response.ok) {
-                Swal.fire("Room Canceled Successfully");
-                const newBooking = booking.filter(book => book._id !== id)
-                setBooking(newBooking)
-              } else {
-                // Handle error
-                console.error("Failed to update room availability");
-              }
-            });
+              fetch(`http://localhost:5000/bookingRoomDelete/${id}`, {
+                  method: "DELETE",
+              })
+              .then((response) => {
+                  if (response.ok) {
+                      fetch(`http://localhost:5000/updatingRoomAvailability/${newId}`, {
+                          method: "PUT",
+                          headers: {
+                            'content-type': 'application/json'
+                          },
+                          body: JSON.stringify({newId})
+                      })
+                      .then((updateResponse) => {
+                          if (updateResponse.ok) {
+                              Swal.fire("Room Deleted Successfully");
+                              const newBooking = booking.filter(book => book._id !== id)
+                              setBooking(newBooking);
+                          } else {
+                              console.error("Failed to update another API");
+                          }
+                      })
+                      .catch((updateError) => {
+                          console.error("Error updating another API:", updateError);
+                      });
+                  } else {
+                      console.error("Failed to delete booking");
+                  }
+              })
+              .catch((error) => {
+                  console.error("Error deleting booking:", error);
+              });
           }
-        });
-      };
+      });
+  };
+  
 
     return (
         <div className="my-5">
