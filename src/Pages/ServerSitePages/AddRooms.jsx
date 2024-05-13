@@ -43,10 +43,10 @@ const AddRooms = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Good job!",
-            text: "Your Paint have added",
+            text: "Your Room have added",
             icon: "success",
           });
-          <Navigate state={location.pathname} to="/allPaint"></Navigate>;
+          <Navigate state={location.pathname} to="/allRoom"></Navigate>;
         }
       });
   };

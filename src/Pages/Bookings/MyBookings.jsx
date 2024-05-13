@@ -51,7 +51,7 @@ const MyBookings = () => {
                       })
                       .then((updateResponse) => {
                           if (updateResponse.ok) {
-                              Swal.fire("Room Deleted Successfully");
+                              Swal.fire("Room Canceled Successfully");
                               const newBooking = booking.filter(book => book._id !== id)
                               setBooking(newBooking);
                           } else {
@@ -78,7 +78,7 @@ const MyBookings = () => {
             <h1 className="text-3xl font-bold text-red-700 text-center">My Booking: {booking.length} </h1>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                 {
-                    booking.map(book=> <BookingCard key={book._id} cancelBooking={cancelBooking} book={book}></BookingCard> )
+                    booking.map(book=> <BookingCard key={book._id} cancelBooking={cancelBooking} book={book} user={user}></BookingCard> )
                 }
             </div>
         </div>

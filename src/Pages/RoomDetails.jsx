@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const RoomDetails = () => {
   const { user } = useContext(AuthContext);
   const singleRoomDetails = useLoaderData();
-  const {_id, roomDesc, image, size, price, availability, offer } =
+  const { _id, roomDesc, image, size, price, availability, offer } =
     singleRoomDetails;
 
   const location = useLocation();
@@ -35,7 +35,7 @@ const RoomDetails = () => {
       date,
       phone,
       image,
-      newId
+      newId,
     };
 
     const modalContent = `
@@ -74,18 +74,18 @@ const RoomDetails = () => {
           .then((response) => {
             if (response.ok) {
               return fetch(`http://localhost:5000/updateAvailability/${_id}`, {
-                method: 'PUT',
+                method: "PUT",
                 headers: {
-                    'Content-Type': 'application/json'
+                  "Content-Type": "application/json",
                 },
-                body : JSON.stringify({ _id, newId}),
-            });
+                body: JSON.stringify({ _id, newId }),
+              });
             }
             throw new Error("Network response was not ok.");
           })
           .then((data) => {
             console.log("Room data saved successfully:", data);
-            navigate(location?.state ? location.state : '/myBookings')
+            navigate(location?.state ? location.state : "/myBookings");
             Swal.fire(
               "You Have Booked This Room Successfully!! <br> Enjoy Our Service and Give us a feedback"
             );
@@ -103,6 +103,23 @@ const RoomDetails = () => {
     });
   };
 
+  // Showing Reviews
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/reviews")
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
+
+  // console.log(reviews[0].newId)
+  
+  console.log(_id)
+  // const newReviews = reviews.find((r) => r.newId === _id);
+  const roomReviews = reviews.filter((review) => review.newId === _id);
+  // setReviews(newReviews);
+  // console.log(newReviews)
+
   return (
     <div className="flex flex-col justify-center items-center my-5">
       <div>
@@ -113,7 +130,7 @@ const RoomDetails = () => {
       <div>
         <img className="h-96 w-96" src={image} alt="" />
       </div>
-      <div className="space-y-3 w-full lg:w-1/2 text-center bg-gray-200 p-5 my-20">
+      <div className="space-y-3 w-full lg:w-1/2 text-center bg-gray-200 p-5 mt-20">
         <p className="text lg:px-20 md:px-5 px-2 gray-600">
           <strong className="text-2xl font-bold">
             Description <br />
@@ -200,6 +217,30 @@ const RoomDetails = () => {
             </h1>
           </div>
         )}
+        <div className="my-5 bg-green-200">
+          <h1 className="text-center text-2xl font-bold ">
+            What Our User Says About This Room
+          </h1>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 my-10">
+            {roomReviews.map((review) => (
+              <div key={review._id} className="bg-red-200 rounded text-center">
+                <h1>
+                  <strong>Name</strong>
+                  <br /> {review.username}
+                </h1>
+                <h1>
+                  <strong>Rating</strong> <br /> {review.rating}
+                </h1>
+                <h1>
+                  <strong>Time</strong> <br /> {review.time}
+                </h1>
+                <h1>
+                  <strong>Experience</strong> <br /> {review.experience}
+                </h1>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

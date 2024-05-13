@@ -1,6 +1,63 @@
-const BookingCard = ({ book,cancelBooking }) => {
-  
-  const { _id, name, offer, roomDesc, image, date, phone, price, size, newId } = book;
+import { useState } from "react";
+import Modal from "react-modal";
+import { Navigate, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+const BookingCard = ({ book, cancelBooking, user }) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {}
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+  const { _id, name, offer, roomDesc, image, date, phone, price, size, newId } =
+    book;
+
+  const location = useLocation();
+  const handleReview = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const experience = form.experience.value;
+    const username = form.username.value;
+    const rating = form.rating.value;
+    const time = form.time.value;
+    const review = { experience, username, rating, time, newId };
+    console.log(review);
+    fetch("http://localhost:5000/reviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Thank You For Adding Reviews",
+            icon: "success",
+          });
+          <Navigate state={location.pathname} to="/"></Navigate>;
+        }
+      });
+  };
 
   return (
     <div className="flex flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2">
@@ -27,15 +84,99 @@ const BookingCard = ({ book,cancelBooking }) => {
           <strong>Room Size: </strong>
           {size}Sq
         </h1>
-        <div className="text-center">
+        <div className="text-center flex gap-10">
           <button
             onClick={() => {
-              cancelBooking(_id,newId);
+              cancelBooking(_id, newId);
             }}
             className="p-2 bg-btn hover:bg-btn-hover rounded font-bold text-white"
           >
             Cancel Booking
           </button>
+          <div>
+            <button
+              className="p-2 bg-green-500 hover:bg-green-950 rounded font-bold text-white"
+              onClick={openModal}
+            >
+              Give Review
+            </button>
+            <Modal
+              ariaHideApp={false}
+              isOpen={modalIsOpen}
+              onAfterOpen={afterOpenModal}
+              onRequestClose={closeModal}
+              style={customStyles}
+              contentLabel="Example Modal"
+            >
+              <h1 className="text-xl font-bold text-green-600 my-5">
+                Give Review About This Room
+              </h1>
+              <div>
+                <form onSubmit={handleReview} className="space-y-4">
+                  <label className="block">
+                    <span className="mb-1">Your Experience</span>
+                    <input
+                      type="textarea"
+                      name="experience"
+                      placeholder="Your Experience"
+                      className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="mb-1">Username</span>
+                    <input
+                      type="text"
+                      name="username"
+                      defaultValue={user.email}
+                      placeholder="Your Name"
+                      className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="mb-1">Rating</span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={5}
+                      name="rating"
+                      placeholder="Rating"
+                      className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="mb-1">Date</span>
+                    <input
+                      type="time"
+                      name="time"
+                      placeholder="Date Time"
+                      defaultValue={new Date().toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: false,
+                      })}
+                      className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                    />
+                  </label>
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="p-2 bg-green-500 text-white hover:bg-btn-hover rounded font-bold "
+                    >
+                      Post
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div className="mt-5 text-center">
+                <button
+                  className="p-2 bg-btn text-white hover:bg-btn-hover rounded font-bold"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+              </div>
+            </Modal>
+          </div>
         </div>
       </div>
     </div>
