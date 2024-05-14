@@ -29,6 +29,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
     book;
 
   const location = useLocation();
+
   const handleReview = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -87,7 +88,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
         <div className="text-center flex gap-10">
           <button
             onClick={() => {
-              cancelBooking(_id, newId);
+              cancelBooking(_id, newId,date);
             }}
             className="p-2 bg-btn hover:bg-btn-hover rounded font-bold text-white"
           >

@@ -25,9 +25,22 @@ const MyBookings = () => {
     }, [url]);
 
     // console.log(booking)
-    const cancelBooking = (id, newId) => {
-      console.log(id,newId)
-      // Make API call to update room availability
+    const cancelBooking = (id, newId,time) => {
+    //   console.log(id,newId)
+
+    const oneDayInMilliseconds = 24 * 60 * 60 * 1000; // One day in milliseconds
+        console.log(time) // 2024-05-14
+    const currentDate = new Date(); // Get the current date
+    const differenceInDays = Math.ceil((new Date(time).getTime() - currentDate.getTime()) / oneDayInMilliseconds);
+
+    if (differenceInDays <= 1) {
+        Swal.fire({
+            title: "Cannot Cancel Booking",
+            text: "You cannot cancel the booking as it is less than 1 day away.",
+            icon: "warning",
+        });
+        return;
+    }
       Swal.fire({
           title: "Confirm Booking",
           html: "Are You Sure You Want to Cancel Booking",
