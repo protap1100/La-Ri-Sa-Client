@@ -6,7 +6,7 @@ const AllSingleRoom = ({room}) => {
     // console.log(hi)
     return (
         <div className="flex flex-col my-5 justify-center items-center bg-gradient-to-r from-red-100 via-yellow-100 to-pink-100 space-y-3 py-5 shadow-xl rounded">
-            <div><img className="h-96 w-96 rounded-xl" src={image} alt="" /></div>
+            <Link to={`/roomDetails/${_id}`}><img className="h-96 w-96 rounded-xl" src={image} alt="" /></Link>
             <h1 className="text-center px-5">Desc: {roomDesc}</h1>
             <h1> <strong>Room Size</strong> :{size}Sq</h1>
             <h1> <strong>Price</strong> :{price}$</h1>

@@ -58,7 +58,7 @@ const UsersReview = () => {
         autoplay={{ delay: 4000 }} 
         loop={true}
         modules={[Pagination]}
-        className="h-40 rounded bg-gray-200"
+        className="h-60 rounded bg-gray-200"
       >
         {reviews.map((review, index) => (
           <SwiperSlide

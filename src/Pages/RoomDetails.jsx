@@ -2,6 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/swiper-bundle.css";
+import { Pagination } from "swiper/modules";
 
 const RoomDetails = () => {
   const { user } = useContext(AuthContext);
@@ -49,7 +56,7 @@ const RoomDetails = () => {
               <p><strong>Offer:</strong> ${offer}% For Booking Right Now</p>
               <p><strong>Name:</strong> ${name}</p>
               <p><strong>Email:</strong> ${userEmail}</p>
-              <p><strong>Email:</strong> ${image}</p>
+              <p><strong>Image:</strong> ${image}</p>
               <p><strong>Phone:</strong> ${phone}</p>
               <p><strong>Check In Date:</strong> ${date}</p>
               <p><strong>Check In Date:</strong> ${newId}</p>
@@ -113,13 +120,25 @@ const RoomDetails = () => {
   }, []);
 
   // console.log(reviews[0].newId)
-  
-  console.log(_id)
+
+  console.log(_id);
   // const newReviews = reviews.find((r) => r.newId === _id);
   const roomReviews = reviews.filter((review) => review.newId === _id);
   // setReviews(newReviews);
   // console.log(newReviews)
-
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+  const colors = [
+    "bg-gradient-to-r from-red-200 via-yellow-200 to-pink-200",
+    "bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200",
+    "bg-gradient-to-r from-blue-200 via-violet-200 to-green-200",
+  ];
   return (
     <div className="flex flex-col justify-center items-center my-5">
       <div>
@@ -218,27 +237,73 @@ const RoomDetails = () => {
           </div>
         )}
         <div className="my-5 bg-green-200">
-          <h1 className="text-center text-2xl font-bold ">
-            What Our User Says About This Room
-          </h1>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 my-10">
-            {roomReviews.map((review) => (
-              <div key={review._id} className="bg-red-200 rounded text-center">
-                <h1>
-                  <strong>Name</strong>
-                  <br /> {review.username}
-                </h1>
-                <h1>
-                  <strong>Rating</strong> <br /> {review.rating}
-                </h1>
-                <h1>
-                  <strong>Time</strong> <br /> {review.time}
-                </h1>
-                <h1>
-                  <strong>Experience</strong> <br /> {review.experience}
-                </h1>
-              </div>
-            ))}
+          <div className="my-5">
+            <div className="my-10">
+              <h1 className="font-bold text-3xl text-center mt-5">
+              What Our User Says About This Room
+              </h1>
+              <p className="text-center my-5">
+                Discover what our visitors love about This Room! Read their
+                testimonials and explore the essence of their experiences with
+                our services.
+              </p>
+              <p>
+                {
+                  roomReviews.length ? <h1 className="font-bold text-3xl">Total Reviews For This Page: {roomReviews.length}</h1> : <h1>No Reviews Available</h1>
+                }
+              </p>
+            </div>
+            {
+              roomReviews.length > 1 ? <div>
+              <Swiper
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                  },
+                  1024: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                  },
+                }}
+                spaceBetween={10}
+                centeredSlides={true}
+                pagination={{
+                  clickable: true,
+                }}
+                autoplay={{ delay: 4000 }}
+                loop={true}
+                modules={[Pagination]}
+                className="h-80 rounded bg-gray-200"
+              >
+                {roomReviews.map((review, index) => (
+                  <SwiperSlide
+                    className={`rounded-xl w-full shadow-lg p-5 ${
+                      colors[index % colors.length]
+                    }`}
+                    key={review._id}
+                  >
+                    <h1>
+                      <strong>Name:</strong> {review.username}
+                    </h1>
+                    <h1>
+                      <strong>Visited Date:</strong> {formatDate(review.time)}
+                    </h1>
+                    <h1>
+                      <strong>Experience:</strong> {review.experience}
+                    </h1>
+                    <h1>
+                      <strong>Rating:</strong> {review.rating}
+                    </h1>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div> : <h1 className="py-4 font-bold text-3xl text-red-500">No Reviews Available For This Room</h1>
+            }
           </div>
         </div>
       </div>

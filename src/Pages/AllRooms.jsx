@@ -34,6 +34,9 @@ const AllRooms = () => {
   // console.log(myRoom)
   return (
     <div>
+      <div>
+          <h1 className="text-center font-bold my-3 text-3xl bg-gradient-to-r from-blue-600 via-green-400 to-red-600  text-transparent bg-clip-text">Search Room According To Your Budget</h1>
+      </div>
       <div className="mt-6 flex justify-center">
         <input
           type="number"
@@ -49,7 +52,7 @@ const AllRooms = () => {
           onChange={(e) => setMaxPrice(e.target.value)}
           className="border border-gray-400 rounded-md py-1 px-3 ml-2"
         />
-        <button onClick={handleFilter} className="ml-2 bg-blue-500 text-white px-3 py-1 rounded-md">Search</button>
+        <button onClick={handleFilter} className="ml-2 bg-btn  hover:bg-btn-hover text-white px-3 py-1 rounded-md">Search</button>
       </div>
 
       {loading ? (

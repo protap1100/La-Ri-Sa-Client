@@ -129,6 +129,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
                       type="text"
                       name="username"
                       defaultValue={user.email}
+                      readOnly
                       placeholder="Your Name"
                       className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                     />
@@ -145,7 +146,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
                     />
                   </label>
                   <label className="block">
-                    <span className="mb-1">Visited On</span>
+                    <span className="mb-1">Reviewed On</span>
                     <input
                       type="datetime-local"
                       name="time"
