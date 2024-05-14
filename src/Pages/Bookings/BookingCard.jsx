@@ -88,7 +88,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
         <div className="text-center flex gap-10">
           <button
             onClick={() => {
-              cancelBooking(_id, newId,date);
+              cancelBooking(_id, newId, date);
             }}
             className="p-2 bg-btn hover:bg-btn-hover rounded font-bold text-white"
           >
@@ -147,9 +147,10 @@ const BookingCard = ({ book, cancelBooking, user }) => {
                   <label className="block">
                     <span className="mb-1">Visited On</span>
                     <input
-                      type="date"
+                      type="datetime-local"
                       name="time"
-                      placeholder="Date Time"
+                      defaultValue={new Date().toISOString().slice(0, 16)} // Set current date and time as default value
+                      disabled // Disable the input field to prevent user input
                       className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                     />
                   </label>
