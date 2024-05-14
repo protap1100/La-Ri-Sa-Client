@@ -55,6 +55,8 @@ const UsersReview = () => {
         pagination={{
           clickable: true,
         }}
+        autoplay={{ delay: 4000 }} 
+        loop={true}
         modules={[Pagination]}
         className="h-40 rounded bg-gray-200"
       >

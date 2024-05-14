@@ -6,7 +6,7 @@ const SingleFeaturedRoom = ({room}) => {
     // const hi = useLocation();
     // console.log(hi)
     return (
-        <div className="flex flex-col justify-center items-center space-y-3 shadow-xl rounded bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 py-5">
+        <div className="flex flex-col justify-center  px-14 items-center space-y-3 shadow-xl rounded bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 py-5">
             <div><img className="h-96 w-96 rounded" src={image} alt="" /></div>
             <h1 className="text-center"><strong>Description</strong> : {roomDesc}</h1>
             <h1> <strong>Room Size</strong> :{size}</h1>

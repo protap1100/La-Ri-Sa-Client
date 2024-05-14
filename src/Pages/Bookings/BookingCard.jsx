@@ -60,7 +60,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2">
+    <div className="flex bg-gradient-to-r from-red-100 via-yellow-100 to-pink-100 flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2">
       <h1></h1>
       <div className="space-y-2 flex flex-col justify-center items-center">
         <img className="w-96 h-72 object-center" src={image} alt="" />

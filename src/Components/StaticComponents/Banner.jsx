@@ -60,7 +60,7 @@ const Banner = () => {
           prevEl: ".swiper-button-prev",
         }}
         onSwiper={setSwiper}
-        autoplay={{ delay: 3000 }} // Autoplay with 3 seconds delay
+        autoplay={{ delay: 3000 }} 
         loop={true}
       >
         <SwiperSlide>

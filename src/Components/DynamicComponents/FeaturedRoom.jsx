@@ -11,7 +11,10 @@ const FeaturedRoom = () => {
     fetch("http://localhost:5000/allRoom")
       .then((res) => res.json())
       .then((data) => {
-        setFeaturedRoom(data);
+        const availableRooms = data.filter(
+          (room) => room.availability === "available"
+        );
+        setFeaturedRoom(availableRooms);
         setLoading(false);
       });
   }, []);
@@ -19,7 +22,11 @@ const FeaturedRoom = () => {
   // console.log(featuredRoom);
 
   return (
-    <div className="my-10">
+    <div className="my-20">
+      <div className="my-10 space-y-3">
+          <h1 className="text-center font-bold text-3xl">Here is All Our Featured Room</h1>
+          <h1 className="text-center px-4">These Room are available For booking You can check about peoples review about this these room  by clicking view details</h1>
+      </div>
       {loading ? (
         <div className="flex justify-center items-center my-40">
           <span className="text-accent loading text-center loading-spinner loading-lg"></span>
@@ -31,7 +38,7 @@ const FeaturedRoom = () => {
             }
         </div>
       )}
-      <div className="text-center my-5">
+      <div className="text-center mt-10">
         <Link to='/allRoom' className="bg-btn p-2 text-white font-bold rounded hover:bg-btn-hover">See All Rooms</Link>
       </div>
     </div>

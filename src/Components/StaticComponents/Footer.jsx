@@ -48,10 +48,10 @@ const Footer = () => {
 
           <div className="rounded-xl text-center p-9">
                 <div className="flex justify-center mt-5 gap-5">  
-                    <a href="#"><i className="text-3xl"><SocialIcon url="https://facebook.com" /> </i></a>
-                    <a href="#"><i className="text-3xl"><SocialIcon url="https://instagram.com" /></i></a>
-                    <a href="#"><i className="text-3xl"><SocialIcon url="https://twitter.com" /></i></a>
-                    <a href="#"><i className="text-3xl"><SocialIcon url="https://github.com" /></i></a>
+                    <h1 href="#"><i className="text-2xl"><SocialIcon url="https://facebook.com" /> </i></h1>
+                    <h1 href="#"><i className="text-2xl"><SocialIcon url="https://instagram.com" /></i></h1>
+                    <h1 href="#"><i className="text-2xl"><SocialIcon url="https://twitter.com" /></i></h1>
+                    <h1 href="#"><i className="text-2xl"><SocialIcon url="https://github.com" /></i></h1>
                 </div>
             </div>
           <div className="flex items-center justify-center  text-sm">
