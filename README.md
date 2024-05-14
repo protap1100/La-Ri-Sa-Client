@@ -1,7 +1,7 @@
 # [La Ri Sa - Room Booking Service](#)
 
 La Ri Sa is a comprehensive room booking platform designed to cater to the needs of tourists seeking convenient and comfortable accommodations. With a user-friendly interface and a range of features, La Ri Sa aims to provide a seamless booking experience for both guests and hosts.
-
+<a href-"https//www.facebook.com"> Live Link </a>
 Assignment Category : 004
 
 ## Features
@@ -43,11 +43,4 @@ To incentivize bookings and reward loyal users, La Ri Sa showcases special offer
 - **Mapping**: React Leaflet
 - **Slider**: Swiper Slide
 
-## Contributors
 
-- John Doe ([@johndoe](https://github.com/johndoe))
-- Jane Smith ([@janesmith](https://github.com/janesmith))
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
