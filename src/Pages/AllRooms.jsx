@@ -4,9 +4,11 @@ import AllSingleRoom from "./AllSingleRoom";
 const AllRooms = () => {
   const [myRoom, setMyRoom] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allRoom`,{credentials: 'include'})
+    fetch(`http://localhost:5000/allRoom`, { credentials: 'include' })
       .then((res) => res.json())
       .then((data) => {
         const availableRooms = data.filter(
@@ -17,12 +19,37 @@ const AllRooms = () => {
       });
   }, []);
 
-  console.log(myRoom);
+  const handleSearch = () => {
+  // Filter rooms based on the price range
+  const filteredRooms = myRoom.filter(room =>
+    room.price >= parseInt(minPrice) && room.price <= parseInt(maxPrice)
+  );
+  setMyRoom(filteredRooms);
+};
+  console.log(myRoom)
   return (
     <div>
+      <div className="mt-6 flex justify-center">
+        <input
+          type="number"
+          placeholder="Min Price"
+          value={minPrice}
+          onChange={(e) => setMinPrice(e.target.value)}
+          className="border border-gray-400 rounded-md py-1 px-3"
+        />
+        <input
+          type="number"
+          placeholder="Max Price"
+          value={maxPrice}
+          onChange={(e) => setMaxPrice(e.target.value)}
+          className="border border-gray-400 rounded-md py-1 px-3 ml-2"
+        />
+        <button onClick={handleSearch} className="ml-2 bg-blue-500 text-white px-3 py-1 rounded-md">Search</button>
+      </div>
+
       {loading ? (
         <div className="my-40 text-center"><span className="loading loading-spinner text-error"></span></div>
-            ) : (
+      ) : (
         <div>
           <div className="mt-10">
             <h1 className="text-4xl text-center font-bold my-2 bg-gradient-to-r from-violet-600 via-red-400 to-blue-600  text-transparent bg-clip-text">
