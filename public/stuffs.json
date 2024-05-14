@@ -1,0 +1,48 @@
+[
+    {
+      "staff_id": 1,
+      "name": "Rajesh Kumar",
+      "position": "Front Desk Manager",
+      "location": "City Center, Goa",
+      "experience_years": 5,
+      "description": "Rajesh is our friendly and efficient Front Desk Manager, ensuring smooth check-ins and providing helpful assistance to guests. With over 5 years of experience in hospitality, he ensures that every guest has a memorable stay at our hostel.",
+      "image_url": "https://i.ibb.co/t8bfCwR/man1.jpg"
+    },
+    {
+      "staff_id": 2,
+      "name": "Priya Sharma",
+      "position": "Housekeeping Supervisor",
+      "location": "Beachside, Kerala",
+      "experience_years": 3,
+      "description": "Priya oversees our dedicated housekeeping team, ensuring that our hostel is clean, tidy, and welcoming for all guests. With 3 years of experience in hospitality, she ensures that cleanliness standards are maintained to the highest level.",
+      "image_url": "https://i.ibb.co/hVjVGyD/women2.jpg"
+    },
+    {
+      "staff_id": 3,
+      "name": "Sandeep Singh",
+      "position": "Chef",
+      "location": "Hill Station, Himachal Pradesh",
+      "experience_years": 7,
+      "description": "Sandeep is our talented chef, delighting guests with his culinary creations at our hostel's restaurant. With 7 years of experience in the culinary industry, he brings passion and creativity to every dish he prepares.",
+      "image_url": "https://i.ibb.co/NWH86Cz/man2.jpg"
+    },
+    {
+      "staff_id": 4,
+      "name": "Ananya Patel",
+      "position": "Activities Coordinator",
+      "location": "Coastal Town, Maharashtra",
+      "experience_years": 4,
+      "description": "Ananya organizes a variety of exciting activities and events for guests to enjoy during their stay at our resort. With 4 years of experience in event planning, she ensures that guests have fun-filled and memorable experiences.",
+      "image_url": "https://i.ibb.co/ZN28T06/man3.jpg"
+    },
+    {
+      "staff_id": 5,
+      "name": "Vikram Malhotra",
+      "position": "Resort Manager",
+      "location": "Mountain Retreat, Uttarakhand",
+      "experience_years": 10,
+      "description": "Vikram oversees all operations at our resort, ensuring that guests receive exceptional service and unforgettable experiences. With 10 years of experience in hospitality management, he leads our team with professionalism and dedication.",
+      "image_url": "https://i.ibb.co/f4FYjVt/man4.jpg"
+    }
+  ]
+  
