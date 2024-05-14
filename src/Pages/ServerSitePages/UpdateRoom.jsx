@@ -26,7 +26,8 @@ const UpdateRoom = () => {
     event.preventDefault();
     const form = event.target;
     const roomDesc = form.room.value;
-    const price = form.price.value;
+    const newPrice = form.price.value;
+    const price = parseInt(newPrice);
     const availability = form.availability.value;
     const size = form.size.value;
     const email = form.email.value;
@@ -97,7 +98,7 @@ const UpdateRoom = () => {
             <label className="block">
               <span className="mb-1">Price Per Night (In Dollar)</span>
               <input
-                type="text"
+                type="number"
                 name="price"
                 defaultValue={price}
                 placeholder="Price Per Night"

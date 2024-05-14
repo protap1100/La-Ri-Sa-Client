@@ -13,7 +13,8 @@ const AddRooms = () => {
     event.preventDefault();
     const form = event.target;
     const roomDesc = form.room.value;
-    const price = form.price.value;
+    const firstPrice = form.price.value;
+    const price = parseInt(firstPrice);
     const availability = form.availability.value;
     const size = form.size.value;
     const email = form.email.value;
@@ -88,7 +89,7 @@ const AddRooms = () => {
               <label className="block">
                 <span className="mb-1">Price Per Night (In Dollar)</span>
                 <input
-                  type="text"
+                  type="number"
                   name="price"
                   placeholder="Price Per Night"
                   className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"

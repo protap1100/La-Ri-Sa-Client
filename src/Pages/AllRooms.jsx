@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AllSingleRoom from "./AllSingleRoom";
+import axios from "axios";
 
 const AllRooms = () => {
   const [myRoom, setMyRoom] = useState([]);
@@ -19,14 +20,18 @@ const AllRooms = () => {
       });
   }, []);
 
-  const handleSearch = () => {
-  // Filter rooms based on the price range
-  const filteredRooms = myRoom.filter(room =>
-    room.price >= parseInt(minPrice) && room.price <= parseInt(maxPrice)
-  );
-  setMyRoom(filteredRooms);
-};
-  console.log(myRoom)
+  const handleFilter = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`http://localhost:5000/filterRooms?minPrice=${minPrice}&maxPrice=${maxPrice}`);
+      console.log("Response data:", response.data);
+      setMyRoom(response.data);
+    } catch (error) {
+      console.error('Error filtering rooms:', error);
+    }
+    setLoading(false);
+  };
+  // console.log(myRoom)
   return (
     <div>
       <div className="mt-6 flex justify-center">
@@ -44,7 +49,7 @@ const AllRooms = () => {
           onChange={(e) => setMaxPrice(e.target.value)}
           className="border border-gray-400 rounded-md py-1 px-3 ml-2"
         />
-        <button onClick={handleSearch} className="ml-2 bg-blue-500 text-white px-3 py-1 rounded-md">Search</button>
+        <button onClick={handleFilter} className="ml-2 bg-blue-500 text-white px-3 py-1 rounded-md">Search</button>
       </div>
 
       {loading ? (
