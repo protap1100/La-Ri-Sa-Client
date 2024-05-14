@@ -1,62 +1,65 @@
 // import { Helmet } from "react-helmet-async";
+import image1 from '../../assets/images/icons/Group 1171275317.png'
+import image2 from '../../assets/images/icons/Group 1171275318.png'
+import image3 from '../../assets/images/icons/Group 1171275321.png'
 
 const ContactUs = () => {
     return (
-        <div className="mt-5 container mx-auto">
-            {/* <Helmet>
-                <link rel="icon" type="image/svg+xml" href="/src/assets/icon/contact.png" />
-                <title>Contact Us</title>
-            </Helmet> */}
-            <h1 className="text-center my-10 font-bold text-3xl text-red-600">Contact Us Form</h1>
-            <section className="py-6 mt-5 bg-gray-200 dark:text-gray-900 rounded-xl">
-                <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
-                    <div className="py-6 md:py-0 md:px-6">
-                        <h1 className="text-4xl font-bold">Get in touch</h1>
-                        <p className="pt-2 pb-4">Fill in the form to start a conversation</p>
-                        <div className="space-y-4">
-                            <p className="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-2 sm:mr-6">
-                                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
-                                </svg>
-                                <span>Kumkumari,Ashulia,Dhaka</span>
-                            </p>
-                            <p className="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-2 sm:mr-6">
-                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                                </svg>
-                                <span>01957290864</span>
-                            </p>
-                            <p className="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-2 sm:mr-6">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                                </svg>
-                                <span>protapb23@gmail.com</span>
-                            </p>
-                        </div>
+        <section className="container mx-auto my-5 bg-gradient-to-r from-indigo-200 from-10% via-sky-200 via-30% to-emerald-200 to-90% rounded-xl ">
+            <div className="border-dashed border mt-32 border-[#13131833] lg:mx-0 mx-2"></div>
+            <div className="text-center px-2 lg:px-0">
+                <h1 className="text-4xl font-extrabold mt-8">Get in Touch</h1>
+                <p className="mt-6 px-2 lg:px-[370px]">Get in touch with us! Fill out the form below for personalized assistance and quick responses to your inquiries</p>
+            </div>
+            <div className="border-dashed border mt-8 border-[#13131833] lg:mx-0 mx-2"></div>
+
+            <div className="mt-8 lg:flex px-5">
+               <div className="flex-grow-0 p-12 border border-[#1313181A] space-y-2 rounded-2xl">
+                    <div className="bg-[#bced6e1a] rounded-xl py-8 pr-40 pl-6">
+                        <img src={image1} alt=""/>
+                        <p className="mt-10">Phone Number</p>
+                        <h1 className="mt-2 font-extrabold">+8801957290864</h1>
                     </div>
-                    <form  className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
-                        <label className="block">
-                            <span className="mb-1">Full name</span>
-                            <input type="text" placeholder="Your Name" className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100" />
-                        </label>
-                        <label className="block">
-                            <span className="mb-1">Email address</span>
-                            <input type="email" placeholder="Your Email Address" className="block h-10 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"  />
-                        </label>
-                        <label className="block">
-                            <span className="mb-1">Phone</span>
-                            <input type="text" placeholder="Your Mobile Number" className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100" />
-                        </label>
-                        <label className="block">
-                            <span className="mb-1">Message</span>
-                            <textarea rows="3" placeholder="Your Message" className="block w-full rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"></textarea>
-                        </label>
-                        <button type="button" className="self-center w-full btn btn-primary border-btn-border hover:bg-btn-hover hover:border-btn-hover bg-btn " >Submit</button>
-                    </form>
+                    <div className="bg-[#fddb5f1a] rounded-xl py-8 pr-40 pl-6">
+                        <img src={image2} alt=""/>
+                        <p className="mt-10">Email</p>
+                        <h1 className="mt-2 font-extrabold">protapb23@gmail.com</h1>
+                    </div>
+                    <div className="bg-[#629cf31a] rounded-xl py-8 pr-40 pl-6">
+                        <img src={image3} alt=""/>
+                        <p className="mt-10">Location</p>
+                        <h1 className="mt-2 font-extrabold">Kumkumari,Ashuila,Savar,Dhaka 1353</h1>
+                    </div>
+               </div>
+               <div className="flex-grow">
+                    <div className="grid gap-6 mb-6 grid-cols-1 lg:grid-cols-2 md:grid-cols-2 px-10">
+                        <div className=" col-span-2 lg:col-span-1">
+                            <label className="font-bold text-xl">First name</label>
+                            <input type="text" className="mt-2 border border-[#1313181A] text-sm rounded-lg  block w-full p-5 " placeholder="Enter Your Full Name" required />
+                        </div>
+                       <div className="col-span-2 lg:col-span-1">
+                            <label className="font-bold text-xl">Your Email</label>
+                            <input type="text" className="mt-2 border border-[#1313181A] text-sm rounded-lg  block w-full p-5 " placeholder="Enter Your Email" required /> 
+                        </div>
+                       <div className=" col-span-2 lg:col-span-1">
+                            <label className="font-bold text-xl">Subject</label>
+                            <input type="text" className="mt-2 border border-[#1313181A] text-sm rounded-lg  block w-full p-5 " placeholder="Enter Your Subject" required /> 
+                        </div> 
+                       <div className=" col-span-2 lg:col-span-1">
+                            <label className="font-bold text-xl">Phone</label>
+                            <input type="text" className="mt-2 border border-[#1313181A] text-sm rounded-lg  block w-full p-5 " placeholder="Enter Your Phone" required /> 
+                        </div>
+                       <div className="col-span-2">
+                        <label className="font-bold text-xl">Your Message</label>
+                        <textarea className="mt-2 border border-[#1313181A] text-sm rounded-lg p-5 w-full lg:h-[400px]" placeholder="Your Message" ></textarea>
+                       </div>
+                    </div>
+                    <div className="px-10">
+                        <button className="btn btn-primary w-full hover:bg-orange-950 bg-red-500 border-none text-xl font-bold" >Send Message</button>
+                    </div>
+                    </div>
                 </div>
-            </section>
-        </div>
+        </section>
     );
 };
 

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./StaticPage/Navbar";
-import Footer from "./StaticPage/Footer";
 import TopBar from "../Components/StaticComponents/TopBar";
+import Footer from "../Components/StaticComponents/Footer";
 
 const MainPage = () => {
     return (

@@ -15,12 +15,12 @@ export default {
         'secondary': '#6A5ACD', 
         'btn': '#ff6348',
         'btn-border':'#ff6348',
-        'btn-hover': '#d63031',
+        'btn-hover': '#c43131',
         'border': '#2ed573',
         'TopBackground': '#636e72',
         'hover':'48a5ad',
         'navLink': '#e17055',
-        'activeLink': '#bf2f2f'
+        'activeLink': '#0f1270'
       },
     },
   },

@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar font-Poppins bg-orange-200 rounded-xl">
+      <div className="navbar font-Poppins bg-gradient-to-r from-indigo-300 via-purple-300 to-blue-300 rounded-xl">
         <div className="navbar-start font-Tali">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,7 +55,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "font-bold bg-activeLink p-2  text-white rounded-sm hover:bg-btn-hover"
-                    : "font-bold bg-navLink p-2  text-white rounded-sm hover:bg-btn-hover"
+                    : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2  text-white rounded-sm hover:bg-btn-hover"
                 }
               >
                 Home
@@ -67,7 +67,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "font-bold bg-activeLink p-2  text-white rounded-sm hover:bg-btn-hover"
-                    : "font-bold bg-navLink p-2  text-white rounded-sm hover:bg-btn-hover"
+                    : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2  text-white rounded-sm hover:bg-btn-hover"
                 }
               >
                 My Bookings
@@ -79,7 +79,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "font-bold bg-activeLink p-2  text-white rounded-sm hover:bg-btn-hover"
-                    : "font-bold bg-navLink p-2  text-white rounded-sm hover:bg-btn-hover"
+                    : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2  text-white rounded-sm hover:bg-btn-hover"
                 }
               >
                 My Bookings
@@ -91,7 +91,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "font-bold bg-activeLink p-2  text-white rounded-sm hover:bg-btn-hover"
-                    : "font-bold bg-navLink p-2  text-white rounded-sm hover:bg-btn-hover"
+                    : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2  text-white rounded-sm hover:bg-btn-hover"
                 }
               >
                 About Us
@@ -103,14 +103,14 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "font-bold bg-activeLink p-2  text-white rounded-sm hover:bg-btn-hover"
-                    : "font-bold bg-navLink p-2  text-white rounded-sm hover:bg-btn-hover"
+                    : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2  text-white rounded-sm hover:bg-btn-hover"
                 }
               >
                 Contact Us
               </NavLink>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl font-Titillium bg-gradient-to-r from-red-600 via-pink-500 to-indigo-400  text-transparent bg-clip-text" >
+          <Link to="/" className="btn btn-ghost text-xl font-Titillium bg-gradient-to-r from-red-600 via-blue-500 to-indigo-400  text-transparent bg-clip-text" >
             La Ri Sa
           </Link>
         </div>
@@ -123,7 +123,7 @@ const Navbar = () => {
                   ? "pending"
                   : isActive
                   ? "font-bold bg-activeLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
-                  : "font-bold bg-navLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
+                  : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
               }
             >
               Home
@@ -135,7 +135,7 @@ const Navbar = () => {
                   ? "pending"
                   : isActive
                   ? "font-bold bg-activeLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover "
-                  : "font-bold bg-navLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
+                  : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
               }
             >
               My Bookings
@@ -147,7 +147,7 @@ const Navbar = () => {
                   ? "pending"
                   : isActive
                   ? "font-bold bg-activeLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover "
-                  : "font-bold bg-navLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
+                  : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
               }
             >
               All Room
@@ -159,7 +159,7 @@ const Navbar = () => {
                   ? "pending"
                   : isActive
                   ? "font-bold bg-activeLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover "
-                  : "font-bold bg-navLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
+                  : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
               }
             >
               About Us
@@ -171,7 +171,7 @@ const Navbar = () => {
                   ? "pending"
                   : isActive
                   ? "font-bold bg-activeLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover "
-                  : "font-bold bg-navLink p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
+                  : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2 mr-5 text-white rounded-sm hover:bg-btn-hover"
               }
             >
               Contact Us
@@ -206,31 +206,31 @@ const Navbar = () => {
                 <div className="absolute mt-1  bg-white shadow-md rounded-md">
                   <div className="py-1">
                     {user ? (
-                      <div className="w-32">
+                      <div className="w-32 space-y-1">
                         <Link
                           to="/addRooms"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                          className="block px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-200 via-purple-200 to-green-200 text-gray-800 hover:bg-gray-100"
                           onClick={toggleDropdown}
                         >
                           Add Room
                         </Link>
                         <Link
                           to="/myRoom"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                          className="block px-4 py-2 text-gray-800 rounded-xl bg-gradient-to-r from-indigo-200 via-purple-200 to-green-200 hover:bg-gray-100"
                           onClick={toggleDropdown}
                         >
                           My Rooms
                         </Link>
                         <Link
                           to="/updateProfile"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                          className="block px-4 py-2 text-gray-800 rounded-xl bg-gradient-to-r from-indigo-200 via-purple-200 to-green-200 hover:bg-gray-100"
                           onClick={toggleDropdown}
                         >
                           Profile
                         </Link>
                         <button
                           onClick={handleSignOut}
-                          className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+                          className="block w-full text-left px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-200 via-purple-200 to-green-200 text-gray-800 hover:bg-gray-100"
                         >
                           Logout
                         </button>
@@ -238,7 +238,7 @@ const Navbar = () => {
                     ) : (
                       <Link
                         to="/login"
-                        className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                        className="block px-4 py-2 text-gray-800 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:bg-gray-100"
                         onClick={toggleDropdown}
                       >
                         Login

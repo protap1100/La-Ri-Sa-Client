@@ -5,8 +5,8 @@ const AllSingleRoom = ({room}) => {
     // const hi = useLocation();
     // console.log(hi)
     return (
-        <div className="flex flex-col justify-center items-center space-y-3 ">
-            <div><img className="h-96 w-96" src={image} alt="" /></div>
+        <div className="flex flex-col justify-center items-center space-y-3 bg-slate-200 py-5 shadow-xl rounded">
+            <div><img className="h-96 w-96 rounded-xl" src={image} alt="" /></div>
             <h1 className="text-center">Desc: {roomDesc}</h1>
             <h1> <strong>Room Size</strong> :{size}</h1>
             <h1> <strong>Offer:</strong>{offer} </h1>

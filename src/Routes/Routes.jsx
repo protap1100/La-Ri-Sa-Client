@@ -13,6 +13,7 @@ import MyRooms from "../Pages/ServerSitePages/MyRooms";
 import AllRooms from "../Pages/AllRooms";
 import RoomDetails from "../Pages/RoomDetails";
 import UpdateRoom from "../Pages/ServerSitePages/UpdateRoom";
+import UpdateProfile from "../Pages/Authentication/UpdateProfile";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
         {
           path:'/register',
           element : <Register></Register>
+        },
+        {
+          path:'/updateProfile',
+          element : <UpdateProfile></UpdateProfile>
         },
         {
           path:'/myBookings',

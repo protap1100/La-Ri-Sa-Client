@@ -144,16 +144,11 @@ const BookingCard = ({ book, cancelBooking, user }) => {
                     />
                   </label>
                   <label className="block">
-                    <span className="mb-1">Date</span>
+                    <span className="mb-1">Visited On</span>
                     <input
-                      type="time"
+                      type="date"
                       name="time"
                       placeholder="Date Time"
-                      defaultValue={new Date().toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        hour12: false,
-                      })}
                       className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
                     />
                   </label>
