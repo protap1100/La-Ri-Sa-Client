@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import {BsGoogle } from "react-icons/bs";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link,useLocation, useNavigate } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -83,10 +83,10 @@ const Register = () => {
 
   return (
     <div className="container mt-10 mx-auto">
-            {/* <Helmet>
-                <link rel="icon" type="image/svg+xml" href="/src/assets/icon/register.png" />
+            <Helmet>
+                <link rel="icon" type="image/png" href="/src/assets/images/titleIcon/register.png" />
                 <title>Register</title>
-            </Helmet> */}
+            </Helmet>
       <div>
         <h1 className="text-3xl font-bold text-center my-10 animate__animated animate__fadeInDown">Register Here</h1>
       </div>

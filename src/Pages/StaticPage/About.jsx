@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/swiper-bundle.css";
 import { Pagination } from "swiper/modules";
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
   const [stuffs, setStuffs] = useState([]);
@@ -17,11 +18,23 @@ const About = () => {
       .then((data) => setStuffs(data));
   }, []);
 
-  const colors = ["bg-gradient-to-r from-red-200 via-yellow-200 to-pink-200", "bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200", "bg-gradient-to-r from-blue-200 via-violet-200 to-green-200"];
-console.log(stuffs)
+  const colors = [
+    "bg-gradient-to-r from-red-200 via-yellow-200 to-pink-200",
+    "bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200",
+    "bg-gradient-to-r from-blue-200 via-violet-200 to-green-200",
+  ];
+  console.log(stuffs);
 
   return (
     <div>
+      <Helmet>
+        <link
+          rel="icon"
+          type="image/png"
+          href="/src/assets/images/titleIcon/card.png"
+        />
+        <title>About Us</title>
+      </Helmet>
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
@@ -105,7 +118,11 @@ console.log(stuffs)
               >
                 <div>
                   <strong>Name:</strong> {stuff.name}
-                  <img src={stuff.image_url} className="rounded h-40 w-60" alt="" />
+                  <img
+                    src={stuff.image_url}
+                    className="rounded h-40 w-60"
+                    alt=""
+                  />
                 </div>
                 <h1>
                   <strong>Position:</strong> {stuff.position}
@@ -122,7 +139,6 @@ console.log(stuffs)
                 <h1>
                   <strong>Location:</strong> {stuff.Location}
                 </h1>
-                
               </SwiperSlide>
             ))}
           </Swiper>

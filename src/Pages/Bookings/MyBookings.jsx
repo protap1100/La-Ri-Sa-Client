@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import BookingCard from "./BookingCard";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyBookings = () => {
     
@@ -23,13 +24,14 @@ const MyBookings = () => {
                 console.error('Error fetching booked rooms:', error);
             });
     }, [url]);
+    
 
     // console.log(booking)
     const cancelBooking = (id, newId,time) => {
     //   console.log(id,newId)
 
     const oneDayInMilliseconds = 24 * 60 * 60 * 1000; // One day in milliseconds
-        console.log(time) // 2024-05-14
+        // console.log(time) // 2024-05-14
     const currentDate = new Date(); // Get the current date
     const differenceInDays = Math.ceil((new Date(time).getTime() - currentDate.getTime()) / oneDayInMilliseconds);
 
@@ -88,6 +90,10 @@ const MyBookings = () => {
 
     return (
         <div className="my-5">
+             <Helmet>
+                <link rel="icon" type="image/png" href="/src/assets/images/titleIcon/register.png" />
+                <title>My Bookings</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-red-700 text-center">My Booking: {booking.length} </h1>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                 {

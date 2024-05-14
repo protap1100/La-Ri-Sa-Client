@@ -3,6 +3,7 @@ import Navbar from "./StaticPage/Navbar";
 import TopBar from "../Components/StaticComponents/TopBar";
 import Footer from "../Components/StaticComponents/Footer";
 
+
 const MainPage = () => {
     return (
       <div>

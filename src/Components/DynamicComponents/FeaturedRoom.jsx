@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import SingleFeaturedRoom from "./SingleFeaturedRoom";
 import { Link } from "react-router-dom";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 const FeaturedRoom = () => {
   const [featuredRoom, setFeaturedRoom] = useState([]);
@@ -20,9 +22,15 @@ const FeaturedRoom = () => {
   }, []);
 
   // console.log(featuredRoom);
-
+  useEffect(() => {
+    Aos.init({
+      duration: 700,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   return (
-    <div className="my-20">
+    <div className="my-20" data-aos='fade-right'>
       <div className="my-10 space-y-3">
         <h1 className="text-center font-bold text-3xl">
           Here is All Our Featured Room

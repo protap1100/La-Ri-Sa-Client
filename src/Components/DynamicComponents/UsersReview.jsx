@@ -25,7 +25,7 @@ const UsersReview = () => {
     });
   };
   const colors = ["bg-gradient-to-r from-red-200 via-yellow-200 to-pink-200", "bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200", "bg-gradient-to-r from-blue-200 via-violet-200 to-green-200"];
-  console.log(reviews);
+  // console.log(reviews);
 
   return (
     <div className="my-5">

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import Aos from "aos";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { Navigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import "aos/dist/aos.css";
 const customStyles = {
   content: {
     top: "50%",
@@ -15,7 +17,13 @@ const customStyles = {
 
 const BookingCard = ({ book, cancelBooking, user }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   function openModal() {
     setIsOpen(true);
   }
@@ -61,7 +69,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
   };
 
   return (
-    <div className="flex bg-gradient-to-r from-red-100 via-yellow-100 to-pink-100 flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2">
+    <div data-aos="fade-right" className="flex bg-gradient-to-r from-red-100 via-yellow-100 to-pink-100 flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2">
       <h1></h1>
       <div className="space-y-2 flex flex-col justify-center items-center">
         <img className="w-96 h-72 object-center" src={image} alt="" />

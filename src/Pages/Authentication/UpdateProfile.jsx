@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-// import { Helmet } from "react-helmet-async";
-// import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,14 +35,11 @@ const UpdateProfile = () => {
             });
     }
 
-    // console.log(user ? user.email : 'No Email')
-    // console.log(user) 
-
     return (    
         <div className="mt-5 container mx-auto">
-            {/* <Helmet>
+            <Helmet>
                 <title>Update Profile</title>
-            </Helmet> */}
+            </Helmet>
             <h1 className="text-center my-5 font-bold text-2xl text-green-400">Update Your Profile Here</h1>
             <div className="border border-black" ></div>
             <div className="flex flex-col justify-center items-center my-10">

@@ -1,12 +1,21 @@
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const SingleFeaturedRoom = ({room}) => {
-
+    useEffect(() => {
+        Aos.init({
+          duration: 1000,
+          easing: "ease-in-out",
+          once: true,
+        });
+      }, []);
     const {_id,roomDesc,size,image,offer,availability} = room;
     // const hi = useLocation();
     // console.log(hi)
     return (
-        <div className="flex flex-col justify-center  px-14 items-center space-y-3 shadow-xl rounded bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 py-5">
+        <div data-aos='fade-left' className="flex flex-col justify-center  px-14 items-center space-y-3 shadow-xl rounded bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 py-5">
             <div><img className="h-96 w-96 rounded" src={image} alt="" /></div>
             <h1 className="text-center"><strong>Description</strong> : {roomDesc}</h1>
             <h1> <strong>Room Size</strong> :{size}</h1>
