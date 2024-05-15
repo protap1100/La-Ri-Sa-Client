@@ -9,6 +9,7 @@ const MyBookings = () => {
     const {user} = useContext(AuthContext);
     const {email} = user;
     const [booking, setBooking] = useState([]);
+    const [loading,setLoading] = useState(true);
     // const [allRoomData,setAllRoomData] = useState([])
 
     const url = `https://laarisa-booking-server-site.vercel.app/bookedRooms?email=${email}`
@@ -19,6 +20,7 @@ const MyBookings = () => {
             .then(data => {
                 const newBooking = data.filter(item => item.availability === 'notAvailable');
                 setBooking(newBooking);
+                setLoading(false);
             })
             .catch(error => {
                 console.error('Error fetching booked rooms:', error);
@@ -86,10 +88,13 @@ const MyBookings = () => {
           }
       });
   };
-  
+    
 
     return (
         <div className="my-5">
+            {
+                loading ? <div className="text-center my-40"><span className="loading text-4xl loading-spinner text-success"></span> <h1 className="text-3xl font-bold text-red-600">Data is On Loading State Please Wait It Could Take few Seconds </h1> </div> : ''
+            }
              <Helmet>
                 <link rel="icon" type="image/png" href="/src/assets/images/titleIcon/register.png" />
                 <title>My Bookings</title>
