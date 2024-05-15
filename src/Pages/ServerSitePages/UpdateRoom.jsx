@@ -21,7 +21,7 @@ const UpdateRoom = () => {
       image,
      } = newRoom;
 
-  const handleUpdateRoom = () => {
+  const handleUpdateRoom = (event) => {
     console.log("hello world");
     event.preventDefault();
     const form = event.target;

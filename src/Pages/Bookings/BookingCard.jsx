@@ -1,7 +1,7 @@
 import Aos from "aos";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import "aos/dist/aos.css";
 const customStyles = {
@@ -17,6 +17,7 @@ const customStyles = {
 
 const BookingCard = ({ book, cancelBooking, user }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
   useEffect(() => {
     Aos.init({
       duration: 1000,
@@ -24,6 +25,15 @@ const BookingCard = ({ book, cancelBooking, user }) => {
       once: true,
     });
   }, []);
+
+  function openModal2() {
+    setUpdateModalOpen(true);
+  }
+  function afterOpenModal2() {}
+  function closeModal2() {
+    setUpdateModalOpen(false);
+  }
+
   function openModal() {
     setIsOpen(true);
   }
@@ -33,10 +43,12 @@ const BookingCard = ({ book, cancelBooking, user }) => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  // const location = useLocation();
+  // const navigate = useNavigate();
+
   const { _id, name, offer, roomDesc, image, date, phone, price, size, newId } =
     book;
-
-  const location = useLocation();
 
   const handleReview = (event) => {
     event.preventDefault();
@@ -68,8 +80,44 @@ const BookingCard = ({ book, cancelBooking, user }) => {
       });
   };
 
+  const handleUpdateDate = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const newTime = form.newDate.value;
+    const updatedDate = {newTime};
+    // console.log(newTime)
+    fetch(`https://laarisa-booking-server-site.vercel.app/updateDate/${_id}`,{
+      method:'PUT',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(updatedDate)
+  })
+  .then(res=> res.json())
+  .then(data=>{
+      console.log(data);
+      if (data.modifiedCount > 0) {
+          Swal.fire({
+              title: 'Success!',
+              text: 'Date Updated Successfully',
+              icon: 'success',
+              confirmButtonText: 'Cool'
+          })
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+  })
+
+
+
+  };
+
   return (
-    <div data-aos="fade-right" className="flex bg-gradient-to-r from-red-100 via-yellow-100 to-pink-100 flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2">
+    <div
+      data-aos="fade-right"
+      className="flex bg-gradient-to-r from-red-100 via-yellow-100 to-pink-100 flex-col justify-center items-center my-10 border-2 py-5 shadow-xl px-2"
+    >
       <h1></h1>
       <div className="space-y-2 flex flex-col justify-center items-center">
         <img className="w-96 h-72 object-center" src={image} alt="" />
@@ -95,6 +143,12 @@ const BookingCard = ({ book, cancelBooking, user }) => {
         </h1>
         <div className="text-center flex gap-10">
           <button
+            onClick={openModal2}
+            className="p-2 bg-blue-500 hover:bg-blue-950 rounded font-bold text-white"
+          >
+            Update Date
+          </button>
+          <button
             onClick={() => {
               cancelBooking(_id, newId, date);
             }}
@@ -109,6 +163,30 @@ const BookingCard = ({ book, cancelBooking, user }) => {
             >
               Give Review
             </button>
+            <Modal
+              ariaHideApp={false}
+              isOpen={updateModalOpen}
+              onAfterOpen={afterOpenModal2}
+              onRequestClose={closeModal2}
+              style={customStyles}
+              contentLabel="Example Modal"
+            >
+              <div className="p-6">
+                <form onSubmit={handleUpdateDate}>
+                  <label className="block space-y-4">
+                    <span className="mb-1 font-bold">Enter New Date</span>
+                    <input
+                      type="date"
+                      name="newDate"
+                      className="block w-full h-10 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 bg-blue-100"
+                    />
+                  </label>
+                  <div className="text-center mt-5">
+                  <button className="p-2 bg-green-500 hover:bg-green-950 rounded font-bold text-white">Update</button>
+                  </div>
+                </form>
+              </div>
+            </Modal>
             <Modal
               ariaHideApp={false}
               isOpen={modalIsOpen}

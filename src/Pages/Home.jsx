@@ -5,8 +5,16 @@ import Banner from "../Components/StaticComponents/Banner";
 import Map from "../Components/StaticComponents/Map";
 import NewsLetter from "../Components/StaticComponents/NewsLetter";
 import OfferPromotions from "../Components/StaticComponents/OfferPromotions";
+import OfferModal from "../Components/StaticComponents/OfferModal";
+import {useState } from "react";
 
 const Home = () => {
+  const [showModal, setShowModal] = useState(true);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="font-Tali">
       <Helmet>
@@ -17,7 +25,14 @@ const Home = () => {
         />
         <title>Home</title>
       </Helmet>
-      <Banner></Banner>
+      <div className="relative">
+        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-50">
+          {showModal && <OfferModal closeModal={closeModal} />}
+        </div>
+        <div className="relative z-0">
+          <Banner />
+        </div>
+      </div>
       <NewsLetter></NewsLetter>
       <OfferPromotions></OfferPromotions>
       <FeaturedRoom></FeaturedRoom>
