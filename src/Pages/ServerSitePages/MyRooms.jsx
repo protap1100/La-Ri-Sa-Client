@@ -10,19 +10,19 @@ const MyRooms = () => {
 
   const [myRoom, setMyRoom] = useState([]);
 
-  const url = `http://localhost:5000/allMyRooms?email=${user?.email}`;
+  const url = `https://laarisa-booking-server-site.vercel.app/allMyRooms?email=${user?.email}`;
 
   useEffect(() => {
     axios.get(url, { withCredentials: true }).then((res) => {
       setMyRoom(res.data);
     });
-    // fetch(`http://localhost:5000/allMyRooms?email=${email}`)
+    // fetch(`https://laarisa-booking-server-site.vercel.app/allMyRooms?email=${email}`)
     //   .then(res => res.json())
     //   .then(data => setMyRoom(data));
   }, [url]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/allRoom/${id}`, {
+    fetch(`https://laarisa-booking-server-site.vercel.app/allRoom/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

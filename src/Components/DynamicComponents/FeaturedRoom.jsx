@@ -10,7 +10,7 @@ const FeaturedRoom = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allRoom")
+    fetch("https://laarisa-booking-server-site.vercel.app/allRoom")
       .then((res) => res.json())
       .then((data) => {
         const availableRooms = data.filter(

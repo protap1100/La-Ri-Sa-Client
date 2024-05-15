@@ -10,7 +10,7 @@ const AllRooms = () => {
   const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allRoom`, { credentials: "include" })
+    fetch(`https://laarisa-booking-server-site.vercel.app/allRoom`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         const availableRooms = data.filter(
@@ -25,7 +25,7 @@ const AllRooms = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/filterRooms?minPrice=${minPrice}&maxPrice=${maxPrice}`
+        `https://laarisa-booking-server-site.vercel.app/filterRooms?minPrice=${minPrice}&maxPrice=${maxPrice}`
       );
       console.log("Response data:", response.data);
       setMyRoom(response.data);

@@ -47,7 +47,7 @@ const BookingCard = ({ book, cancelBooking, user }) => {
     const time = form.time.value;
     const review = { experience, username, rating, time, newId };
     console.log(review);
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://laarisa-booking-server-site.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

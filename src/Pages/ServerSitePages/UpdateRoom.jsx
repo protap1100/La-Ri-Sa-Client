@@ -43,7 +43,7 @@ const UpdateRoom = () => {
       email,
     };
     console.log(RoomData);
-    fetch(`http://localhost:5000/updateRoom/${_id}`,{
+    fetch(`https://laarisa-booking-server-site.vercel.app/updateRoom/${_id}`,{
         method:'PUT',
         headers: {
             'content-type': 'application/json'

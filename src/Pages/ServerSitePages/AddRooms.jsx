@@ -31,7 +31,7 @@ const AddRooms = () => {
     };
     console.log(RoomData);
 
-    fetch("http://localhost:5000/allRoom", {
+    fetch("https://laarisa-booking-server-site.vercel.app/allRoom", {
       method: "POST",
       headers: {
         "content-type": "application/json",

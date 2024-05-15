@@ -71,7 +71,7 @@ const RoomDetails = () => {
       icon: "info",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/bookedRooms", {
+        fetch("https://laarisa-booking-server-site.vercel.app/bookedRooms", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const RoomDetails = () => {
         })
           .then((response) => {
             if (response.ok) {
-              return fetch(`http://localhost:5000/updateAvailability/${_id}`, {
+              return fetch(`https://laarisa-booking-server-site.vercel.app/updateAvailability/${_id}`, {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
@@ -114,7 +114,7 @@ const RoomDetails = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://laarisa-booking-server-site.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -158,9 +158,9 @@ const RoomDetails = () => {
         </p>
         <p className="text-2xl font-bold text gray-600">Room Size:{size} Sq</p>
         <p className="text-2xl font-bold text gray-600">Price:{price}$</p>
-        <h1 className="text-2xl font-bold text gray-600">
+        <div className="text-2xl font-bold text gray-600">
           {availability ? <p className="text-green-700">Available</p> : ""}
-        </h1>
+        </div>
         <p className="text-2xl font-bold text gray-600">
           Offer:{offer}% For Booking Right Now
         </p>

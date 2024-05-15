@@ -11,7 +11,7 @@ const MyBookings = () => {
     const [booking, setBooking] = useState([]);
     // const [allRoomData,setAllRoomData] = useState([])
 
-    const url = `http://localhost:5000/bookedRooms?email=${email}`
+    const url = `https://laarisa-booking-server-site.vercel.app/bookedRooms?email=${email}`
     
     useEffect(() => {
         fetch(url, { credentials: 'include'})
@@ -52,12 +52,12 @@ const MyBookings = () => {
           icon: "info",
       }).then((result) => {
           if (result.isConfirmed) {
-              fetch(`http://localhost:5000/bookingRoomDelete/${id}`, {
+              fetch(`https://laarisa-booking-server-site.vercel.app/bookingRoomDelete/${id}`, {
                   method: "DELETE",
               })
               .then((response) => {
                   if (response.ok) {
-                      fetch(`http://localhost:5000/updatingRoomAvailability/${newId}`, {
+                      fetch(`https://laarisa-booking-server-site.vercel.app/updatingRoomAvailability/${newId}`, {
                           method: "PUT",
                           headers: {
                             'content-type': 'application/json'

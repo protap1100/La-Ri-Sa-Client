@@ -137,7 +137,7 @@ const About = () => {
                   <strong>Description:</strong> {stuff.description}
                 </h1>
                 <h1>
-                  <strong>Location:</strong> {stuff.Location}
+                  <strong>Location:</strong> {stuff.location}
                 </h1>
               </SwiperSlide>
             ))}

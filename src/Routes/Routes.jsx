@@ -60,17 +60,17 @@ export const router = createBrowserRouter([
         {
           path:'/allRoom',
           element : <AllRooms></AllRooms>,
-          loader : () => fetch('http://localhost:5000/allRoom')
+          loader : () => fetch('https://laarisa-booking-server-site.vercel.app/allRoom')
         },
         {
           path:'/roomDetails/:id',
           element : <RoomDetails></RoomDetails>,
-          loader : ({params}) => fetch(`http://localhost:5000/roomDetails/${params.id}`)
+          loader : ({params}) => fetch(`https://laarisa-booking-server-site.vercel.app/roomDetails/${params.id}`)
         },
         {
           path:'/updateRoom/:id',
           element : <UpdateRoom></UpdateRoom>,
-          loader : ({params}) => fetch(`http://localhost:5000/updateRoom/${params.id}`)
+          loader : ({params}) => fetch(`https://laarisa-booking-server-site.vercel.app/updateRoom/${params.id}`)
         }
       ]
     },

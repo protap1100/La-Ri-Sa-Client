@@ -22,7 +22,7 @@ const Register = () => {
     // console.log('hello world');
     googleSignIn()
       .then((googleToken) => {
-        axios.post('http://localhost:5000/jwt', { googleToken }, { withCredentials: true })
+        axios.post('https://laarisa-booking-server-site.vercel.app/jwt', { googleToken }, { withCredentials: true })
           .then((res) => {
             console.log(res.data);
             if (res.data.success) {
