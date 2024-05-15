@@ -2,7 +2,7 @@
 
 La Ri Sa is a comprehensive room booking platform designed to cater to the needs of tourists seeking convenient and comfortable accommodations. With a user-friendly interface and a range of features, La Ri Sa aims to provide a seamless booking experience for both guests and hosts. <br> </br>
 La Ri Sa Booking:
-<a href="https://resort-la-ri-sa.web.app/">Live Link</a>
+<a href="https://resort-la-ri-sa.web.app/">Live Link</a> <br> </br>
 Assignment Category : 004
 
 ## Features
@@ -34,6 +34,9 @@ La Ri Sa offers an informative About Us page, providing users with insights into
 ### 7. Special Offers and Promotions
 
 To incentivize bookings and reward loyal users, La Ri Sa showcases special offers and promotions on the platform. These exclusive deals provide users with added value and savings, encouraging them to book accommodations through our platform.
+### 8. Jwt Webs Token .
+
+To Secure Api use jwt
 
 ## Tech Stack
 
@@ -41,7 +44,14 @@ To incentivize bookings and reward loyal users, La Ri Sa showcases special offer
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
 - **Authentication**: Firebase Authentication (Google, Gmail)
+- **React Router Dom**: For single page user interface 
 - **Mapping**: React Leaflet
 - **Slider**: Swiper Slide
+- **Animation**: Aos Animation
+- **Helmet Provider**: Helmet Provider
+- **Alert/Toast**: Sweet Alert 2, React Toastify
+- **Other**:React Type Writer,localforge,react-icons,tool-tip 
+
+Author Protap Biswas
 
 
