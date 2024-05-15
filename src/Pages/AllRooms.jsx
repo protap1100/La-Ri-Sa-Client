@@ -50,7 +50,7 @@ const AllRooms = () => {
           Search Room According To Your Budget
         </h1>
       </div>
-      <div className="mt-6 flex justify-center">
+      <div className="mt-6 flex flex-col lg:flex-row justify-center lg:gap-1 gap-4">
         <input
           type="number"
           placeholder="Min Price"

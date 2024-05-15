@@ -73,7 +73,7 @@ const Navbar = () => {
                 My Bookings
               </NavLink>
               <NavLink
-                to="/myBookings"
+                to="/allRoom"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -82,7 +82,7 @@ const Navbar = () => {
                     : "font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 p-2  text-white rounded-sm hover:bg-btn-hover"
                 }
               >
-                My Bookings
+                All Room
               </NavLink>
               <NavLink
                 to="/about"
