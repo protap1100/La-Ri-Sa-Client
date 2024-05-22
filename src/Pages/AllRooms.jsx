@@ -76,6 +76,7 @@ const AllRooms = () => {
       {loading ? (
         <div className="my-40 text-center">
           <span className="loading loading-spinner text-error"></span>
+          <h1 className="text-2xl text-red-500">Data Is Loading It Could Take Few Seconds Thank You For Your Cooperation</h1>
         </div>
       ) : (
         <div>
