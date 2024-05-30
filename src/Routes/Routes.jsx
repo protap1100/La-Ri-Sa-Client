@@ -14,6 +14,11 @@ import AllRooms from "../Pages/AllRooms";
 import RoomDetails from "../Pages/RoomDetails";
 import UpdateRoom from "../Pages/ServerSitePages/UpdateRoom";
 import UpdateProfile from "../Pages/Authentication/UpdateProfile";
+import Payment from "../Pages/Payment.jsx/Payment";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import AllContact from "../Pages/Dashboard/AllContact";
+import AllAdminRooms from "../Pages/Dashboard/AllAdminRooms";
+import AllUser from "../Pages/Dashboard/AllUser";
 
 export const router = createBrowserRouter([
     {
@@ -58,9 +63,13 @@ export const router = createBrowserRouter([
           element : <PrivateRoute><MyRooms></MyRooms></PrivateRoute>,
         },
         {
+          path:'/payment/:id',
+          element : <PrivateRoute><Payment></Payment></PrivateRoute>,
+          loader : ({params}) => fetch(`https://laarisa-booking-server-site.vercel.app/payment/${params.id}`)
+        },
+        {
           path:'/allRoom',
           element : <AllRooms></AllRooms>,
-          // loader : () => fetch('https://laarisa-booking-server-site.vercel.app/allRoom')
         },
         {
           path:'/roomDetails/:id',
@@ -74,4 +83,24 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path : "dashboard",
+      element : <Dashboard></Dashboard>,
+      children : [
+        {
+          path:"contactUs",
+          element : <AllContact></AllContact>
+        },
+        {
+          path:"users",
+          element : <AllUser></AllUser>
+        },
+        {
+          path:"allAdminRooms",
+          element : <AllAdminRooms></AllAdminRooms>
+        },
+      ]
+    }
+
+
   ]);

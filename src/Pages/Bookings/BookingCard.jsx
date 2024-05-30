@@ -1,7 +1,7 @@
 import Aos from "aos";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { Navigate} from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "aos/dist/aos.css";
 const customStyles = {
@@ -84,33 +84,30 @@ const BookingCard = ({ book, cancelBooking, user }) => {
     event.preventDefault();
     const form = event.target;
     const newTime = form.newDate.value;
-    const updatedDate = {newTime};
+    const updatedDate = { newTime };
     // console.log(newTime)
-    fetch(`https://laarisa-booking-server-site.vercel.app/updateDate/${_id}`,{
-      method:'PUT',
+    fetch(`https://laarisa-booking-server-site.vercel.app/updateDate/${_id}`, {
+      method: "PUT",
       headers: {
-          'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(updatedDate)
-  })
-  .then(res=> res.json())
-  .then(data=>{
-      console.log(data);
-      if (data.modifiedCount > 0) {
+      body: JSON.stringify(updatedDate),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
           Swal.fire({
-              title: 'Success!',
-              text: 'Date Updated Successfully',
-              icon: 'success',
-              confirmButtonText: 'Cool'
-          })
-      }
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-  })
-
-
-
+            title: "Success!",
+            text: "Date Updated Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      });
   };
 
   return (
@@ -142,27 +139,32 @@ const BookingCard = ({ book, cancelBooking, user }) => {
           {size}Sq
         </h1>
         <div className="text-center flex gap-10">
-          <button
-            onClick={openModal2}
-            className="p-2 bg-blue-500 hover:bg-blue-950 rounded font-bold text-white"
-          >
-            Update Date
-          </button>
-          <button
-            onClick={() => {
-              cancelBooking(_id, newId, date);
-            }}
-            className="p-2 bg-btn hover:bg-btn-hover rounded font-bold text-white"
-          >
-            Cancel Booking
-          </button>
-          <div>
+          <div className="grid grid-cols-2 gap-5 ">
+            <button
+              onClick={openModal2}
+              className="p-2 bg-blue-500 hover:bg-blue-950 rounded font-bold text-white"
+            >
+              Update Date
+            </button>
+            <button
+              onClick={() => {
+                cancelBooking(_id, newId, date);
+              }}
+              className="p-2 bg-btn hover:bg-btn-hover rounded font-bold text-white"
+            >
+              Cancel Booking
+            </button>
             <button
               className="p-2 bg-green-500 hover:bg-green-950 rounded font-bold text-white"
               onClick={openModal}
             >
               Give Review
             </button>
+            <Link to={`/payment/${_id}`}>
+              <button disabled className='p-2 bg-yellow-300 rounded font-bold text-white hover:bg-btn-hover'>
+                Pay Now
+              </button>
+            </Link>
             <Modal
               ariaHideApp={false}
               isOpen={updateModalOpen}
@@ -182,7 +184,9 @@ const BookingCard = ({ book, cancelBooking, user }) => {
                     />
                   </label>
                   <div className="text-center mt-5">
-                  <button className="p-2 bg-green-500 hover:bg-green-950 rounded font-bold text-white">Update</button>
+                    <button className="p-2 bg-green-500 hover:bg-green-950 rounded font-bold text-white">
+                      Update
+                    </button>
                   </div>
                 </form>
               </div>
