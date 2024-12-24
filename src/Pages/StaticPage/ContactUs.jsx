@@ -87,7 +87,7 @@ const ContactUs = () => {
             <img src={image3} alt="" />
             <p className="mt-10">Location</p>
             <h1 className="mt-2 font-extrabold">
-              Kumkumari,Ashuila,Savar,Dhaka 1353
+              Kumkumari,Ashuila,Savar,Dhaka 1350
             </h1>
           </div>
         </div>
