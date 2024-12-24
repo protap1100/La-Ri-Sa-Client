@@ -27,7 +27,6 @@ const ContactUs = () => {
               text: "Thank You For Contacting Us",
               icon: "success",
             });
-            // <Navigate state={location.pathname} to="/allRoom"></Navigate>;
           }
         });
   };
