@@ -166,7 +166,7 @@ const RoomDetails = () => {
         </p>
 
         {user ? (
-          <div className="bg-gray-100">
+          <div className="bg-gray-200">
             <h1 className="text-2xl font-bold text-blue-500  text-center my-10 ">
               Fill The Form to Book This Room{" "}
             </h1>
