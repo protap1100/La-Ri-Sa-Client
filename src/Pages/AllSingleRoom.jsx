@@ -20,7 +20,7 @@ const AllSingleRoom = ({room}) => {
         <div data-aos='fade-right' className="flex flex-col my-5 justify-center items-center bg-gradient-to-r from-red-100 via-yellow-100 to-pink-100 space-y-3 py-5 shadow-xl rounded">
             <Link to={`/roomDetails/${_id}`}><img className="h-96 w-96 rounded-xl" src={image} alt="" /></Link>
             <h1 className="text-center px-5">Desc: {roomDesc}</h1>
-            <div className='flex gap-5 justify-between'>
+            <div className='flex gap-6 justify-between'>
             <h1> <strong>Room Size</strong> :{size}Sq</h1>
             <h1> <strong>Price</strong> :{price}$</h1>
             </div>
